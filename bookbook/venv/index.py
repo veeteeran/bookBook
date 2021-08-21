@@ -34,5 +34,7 @@ def api(id):
       for t in loads(text):
         if t.get('id') == id:
           return f"Hello {t.get('first_name')}"
+          
+      return f'ID: {id} not found'
   except Exception:
       return Exception
