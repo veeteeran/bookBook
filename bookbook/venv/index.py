@@ -1,9 +1,13 @@
-from flask import Flask
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 from json import loads
+# import sys
+
+# print(f'sys.path: {sys.path}')
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def home():
@@ -33,7 +37,7 @@ def api(id):
 
       for t in loads(text):
         if t.get('id') == id:
-          return f"Hello {t.get('first_name')}"
+          return jsonify({'data': t})
           
       return f'ID: {id} not found'
   except Exception:
