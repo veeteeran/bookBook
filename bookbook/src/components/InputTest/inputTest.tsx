@@ -19,6 +19,13 @@ const InputTest = () => {
     event.preventDefault()
     // fetch(`http://localhost:5000/api/${textInput}`)
     fetch(`https://api-test-eight-iota.vercel.app/api/${textInput}`)
+      // , {
+      // mode: 'no-cors',
+      //   method: "get",
+      //     headers: {
+      //   "Content-Type": "application/json"
+      // }
+      // })
       .then(response => response.json())
       .then(data => setData(data));
     // call serverless function
