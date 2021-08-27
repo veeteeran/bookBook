@@ -11,7 +11,7 @@ CORS(app)
 
 @app.route('/')
 def home():
-    return 'Home Page Route'
+    return jsonify({'foo': 'Home Page Route'})
 
 
 @app.route('/about')

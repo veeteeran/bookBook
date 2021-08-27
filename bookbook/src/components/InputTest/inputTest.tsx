@@ -17,8 +17,8 @@ const InputTest = () => {
   console.log(data)
   const handleSubmit = event => {
     event.preventDefault()
-    // fetch(`http://localhost:5000/api/${textInput}`)
-    fetch(`https://api-test-eight-iota.vercel.app/api/${textInput}`)
+    fetch(`http://localhost:5000/api/${textInput}`)
+      // fetch(`https://api-test-eight-iota.vercel.app/api/${textInput}`)
       .then(response => response.json())
       .then(data => setData(data));
     // call serverless function
