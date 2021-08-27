@@ -2,12 +2,12 @@
 """ this module builds DBStorage class from MySQLdb and SQLAlchemy"""
 from models.base_model import BaseModel, Base
 from models.movieratings import MovieRatings
-from models.pivot import Pivot
+from models.bookratings import BookRatings
 from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 # establishes dictionary reference between class name and class itself
-classes = {"MovieRatings": MovieRatings, "Pivot": Pivot}
+classes = {"MovieRatings": MovieRatings, "BookRatings": BookRatings}
 
 
 class DBStorage():
@@ -58,18 +58,21 @@ class DBStorage():
                 objs = self.__session.query(classes[class_name]).all()
                 # for each object, sets key and saves key with obj as value
                 for obj in objs:
-                    key = "{}.{}".format(obj.__class__.__name__,
-                                         obj.id)
+                    # this will need to be adjusted for Books class in future
+                    key = "{}:{}.{}".format("BookRating",
+                                            obj.id
+                                            obj.ISBN)
                     all_dict[key] = obj
         # returns empty dictionary or dict set by matching objs from query
         return (all_dict)
 
-    def get(self, cls=None, id=None):
+    def get(self, cls=None, id=None, ISBN=None):
         """
-        retrieves specific object by class name (cls) and id
+        retrieves specific object by class name (cls) and ISBN
         """
         # if parameters not specified, returns None
-        if cls is None or id is None:
+        # this will need to be adjusted for Books class in future
+        if cls is None or ISBN is None or id is None:
             return None
         # call all method with specified class to get dictionary
         # of all objects of that class in current MySQL session
@@ -78,7 +81,8 @@ class DBStorage():
         if all_objs is not {}:
             for obj in all_objs.values():
                 # if found matching id, return the retrieved object
-                if id == obj.id:
+                # this will need to be adjusted for Books class in future
+                if ISBN == obj.ISBN and ID == obj.id:
                     return obj
         # if no matching object was found in MySQL session, return None
         return None
