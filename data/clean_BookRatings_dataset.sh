@@ -4,6 +4,7 @@
 
 head -n 24 BX-Book-Ratings.sql > BookRatings.sql
 grep -E ",'[[:digit:]]{9}X',[[:digit:]]*);" BX-Book-Ratings.sql >> BookRatings.sql
+grep -E ",'[[:digit:]]{9}x',[[:digit:]]*);" BX-Book-Ratings.sql >> BookRatings.sql
 grep -E ",'[[:digit:]]{10}',[[:digit:]]*);" BX-Book-Ratings.sql >> BookRatings.sql
 grep -E ",'978[[:digit:]]{10}',[[:digit:]]*);" BX-Book-Ratings.sql >> BookRatings.sql
 grep -E ",'979[[:digit:]]{10}',[[:digit:]]*);" BX-Book-Ratings.sql >> BookRatings.sql
