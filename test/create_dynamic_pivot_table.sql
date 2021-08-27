@@ -2,6 +2,7 @@
 -- pivots book to rows and users to columns with ratings at intersection
 
 SET group_concat_max_len = 9999999999999;
+DROP TABLE IF EXISTS `Pivot`;
 SET @columns = NULL;
 SELECT
 	GROUP_CONCAT(DISTINCT
@@ -13,8 +14,7 @@ SELECT
 			''''
 		)
 	) INTO @columns
-FROM MovieRatings
-DROP TABLE IF EXISTS Pivot;
+FROM MovieRatings;
 SET @columns = CONCAT('CREATE TABLE Pivot SELECT Title, ', @columns, ' FROM MovieRatings GROUP BY Title');
 SELECT @columns;
 PREPARE stmt FROM @columns;
