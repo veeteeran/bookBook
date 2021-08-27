@@ -7,9 +7,9 @@ SET @columns = NULL;
 SELECT
 	GROUP_CONCAT(DISTINCT
 		CONCAT(
-			'sum(CASE WHEN ID = ''',
+			'sum(IF(ID= ''',
 			ID,
-			''' THEN Rating END) AS ''',
+			''', Rating, 0)) AS ''',
 			ID,
 			''''
 		)
