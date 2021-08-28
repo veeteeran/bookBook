@@ -15,7 +15,7 @@ const InputTest = () => {
   //   // empty dependency array means this effect will only run once (like componentDidMount in classes)
   // }, []);
   // console.log(data)
-  const handleSubmit = (event: React.MouseEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     // fetch(`/api/${textInput}`)
     fetch(`http://localhost:5000/api/${textInput}`)
@@ -27,11 +27,15 @@ const InputTest = () => {
   }
   console.log(data)
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
-        <textarea onChange={handleChange} />
+        <input
+          onChange={handleChange}
+          placeholder='Add a book'
+          type='text'
+        />
       </label>
-      <input type="submit" value="Submit" onSubmit={handleSubmit} />
+      <button type="submit">Submit</button>
     </form>
   )
 }
