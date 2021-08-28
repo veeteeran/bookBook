@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const InputTest = () => {
   const [textInput, setTextInput] = useState('')
-  const [data, setData] = useState(null);
-  const handleChange = event => {
-    setTextInput(event.target.value);
+  const [data, setData] = useState([])
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTextInput(event.target.value)
   }
   // useEffect(() => {
   //   // GET request using fetch inside useEffect React hook
@@ -14,20 +14,14 @@ const InputTest = () => {
 
   //   // empty dependency array means this effect will only run once (like componentDidMount in classes)
   // }, []);
-  console.log(data)
-  const handleSubmit = event => {
+  // console.log(data)
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // fetch(`http://localhost:5000/api/${textInput}`)
-    fetch(`https://api-test-eight-iota.vercel.app/api/${textInput}`)
-      // , {
-      // mode: 'no-cors',
-      //   method: "get",
-      //     headers: {
-      //   "Content-Type": "application/json"
-      // }
-      // })
+    // fetch(`/api/${textInput}`)
+    fetch(`http://localhost:5000/api/${textInput}`)
       .then(response => response.json())
-      .then(data => setData(data));
+      .then(data => setData(data))
+      .catch(err => console.log(err))
     // call serverless function
     console.log(`You typed ${textInput}`)
   }
@@ -35,9 +29,13 @@ const InputTest = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        <textarea onChange={handleChange} value={textInput} />
+        <input
+          onChange={handleChange}
+          placeholder='Add a book'
+          type='text'
+        />
       </label>
-      <input type="submit" value="Submit" />
+      <button type="submit">Submit</button>
     </form>
   )
 }
