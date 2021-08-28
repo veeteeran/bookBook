@@ -8,7 +8,7 @@ const InputTest = () => {
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    fetch(`http://venv-rogue-eight.vercel.app/api/${textInput}`)
+    fetch(`http://venv-rouge-eight.vercel.app/api/${textInput}`)
       .then(response => response.json())
       .then(data => setData(data))
       .catch(err => console.log(err))
