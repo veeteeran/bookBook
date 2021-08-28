@@ -1,7 +1,6 @@
+import InputTest from '../src/components/InputTest/inputTest'
 import styles from "../styles/Home.module.css"
 import Head from "next/head"
-import Image from "next/image"
-import InputTest from '../src/components/InputTest/inputTest'
 
 export default function Home() {
   return (
