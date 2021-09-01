@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """ this module builds DBStorage class from MySQLdb and SQLAlchemy"""
 from models.base_model import BaseModel, Base
-from models.movieratings import MovieRatings
-from models.bookratings import BookRatings
+from models.movie_ratings import MovieRatings
 from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 # establishes dictionary reference between class name and class itself
-classes = {"MovieRatings": MovieRatings, "BookRatings": BookRatings}
+classes = {"MovieRatings": MovieRatings}
 
 
 class DBStorage():
@@ -40,7 +39,7 @@ class DBStorage():
         # if testing, drops previous metadata
         # IS_TEST = getenv('IS_TEST')
         # if IS_TEST == "true":
-        Base.metadata.drop_all(self.__engine)
+        # Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """
@@ -49,6 +48,7 @@ class DBStorage():
         """
         # starts with empty dictionary
         all_dict = {}
+        all_list = []
         # loops through known classes defined at the top of this module
         for class_name in classes:
             # if no class is specified, matches with all class_name or
@@ -59,20 +59,23 @@ class DBStorage():
                 # for each object, sets key and saves key with obj as value
                 for obj in objs:
                     # this will need to be adjusted for Books class in future
-                    key = "{}:{}.{}".format("BookRating",
-                                            obj.id
-                                            obj.ISBN)
+                    key = "{}:{}.{}".format("MovieRatings",
+                                            obj.ID,
+                                            obj.Title)
                     all_dict[key] = obj
+                    dictionary = obj.to_dict()
+                    del dictionary["__class__"]
+                    all_list.append(dictionary)
         # returns empty dictionary or dict set by matching objs from query
-        return (all_dict)
+        return (all_dict, all_list)
 
-    def get(self, cls=None, id=None, ISBN=None):
+    def get(self, cls=None, id=None, title=None):
         """
         retrieves specific object by class name (cls) and ISBN
         """
         # if parameters not specified, returns None
         # this will need to be adjusted for Books class in future
-        if cls is None or ISBN is None or id is None:
+        if cls is None or title is None or id is None:
             return None
         # call all method with specified class to get dictionary
         # of all objects of that class in current MySQL session
@@ -82,7 +85,7 @@ class DBStorage():
             for obj in all_objs.values():
                 # if found matching id, return the retrieved object
                 # this will need to be adjusted for Books class in future
-                if ISBN == obj.ISBN and ID == obj.id:
+                if title == obj.title and ID == obj.id:
                     return obj
         # if no matching object was found in MySQL session, return None
         return None
