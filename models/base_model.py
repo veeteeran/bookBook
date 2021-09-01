@@ -7,10 +7,6 @@ Base = declarative_base()
 
 class BaseModel():
     """ this module defines BaseModel to be inherited by all classes """
-    # creates required ISBN column in MySQL table
-    ISBN = Column(String(13),
-                  nullable=False,
-                  primary_key=True)
 
     def __init__(self, *args, **kwargs):
         """this method instantiates a new model from kwargs"""
