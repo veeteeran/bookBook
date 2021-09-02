@@ -1,4 +1,4 @@
-import InputTest from '../src/components/InputTest/inputTest'
+import Welcome from '../src/components/Welcome/Welcome'
 import styles from "../styles/Home.module.css"
 import Head from "next/head"
 
@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to bookBook</h1>
-        <InputTest />
+        <Welcome />
       </main>
 
       <footer className={styles.footer}>
