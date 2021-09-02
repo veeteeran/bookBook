@@ -6,6 +6,7 @@ for recommender system for movies, querying from SQLAlchemy models
 
 
 from models import storage
+import numpy as np
 
 
 def pivot_table(ratings_list):
@@ -44,7 +45,7 @@ def pivot_table(ratings_list):
             result[yaxis] = {}
         # tests if movie Title is in results dictionary under user ID key
         if xaxis not in result[yaxis]:
-            # if not, 0 is added to create placeholder for user ID and movie Title
+            # if not, 0 is added to create placeholder for user ID, movie Title
             result[yaxis][xaxis] = 0
         # saves Rating in results dictionary under user ID and movie Title
         result[yaxis][xaxis] = row["Rating"]
@@ -52,7 +53,8 @@ def pivot_table(ratings_list):
     for yaxis in ysort:
         # loops through all movie Titles
         for xaxis in xsort:
-            # if movie Title does not already exist within user ID, saves as 0 rating
+            # if movie Title does not already exist within user ID,
+            #     saves as 0 rating
             if xaxis not in result[yaxis]:
                 result[yaxis][xaxis] = 0
 
@@ -69,10 +71,46 @@ def pivot_table(ratings_list):
         row = [user_id]
         # extends row with user ratings for each movie Title
         row.extend([result[user_id][x] for x in xsort])
-        # appends dictionary with keys from headings and values from row to pivot_table
+        # appends dictionary with keys from headings and
+        #    values from row to pivot_table
         pivot_table.append(dict(zip(headings, row)))
     # returns newly created pivot table
     return pivot_table
+
+
+def to_matrix(pivot_table):
+    """
+    Turns a list of dicts pivot table into a matrix
+        representing user ratings of movies
+
+    parameters:
+        pivot_table [list of dicts]:
+            represents the pivot table
+
+    returns:
+        [numpy.ndarray]:
+            matrix representation of the pivot table
+    """
+    # matrix will be list of lists
+    matrix = []
+    headings = []
+    # adds the keys from dicts as headings for matrix
+    for title in pivot_table[0].keys():
+        headings.append(title)
+    # adds headings as first row of matrix
+    matrix.append(headings)
+    # loops through each row of pivot table
+    for row in pivot_table:
+        new_row = []
+        # adds values from row's dict to new row
+        for value in row.values():
+            new_row.append(value)
+        # adds new row of values to matrix
+        matrix.append(new_row)
+    # transforms a list of lists (matrix) into numpy.ndarray
+    array = np.array(matrix, ndmin=2)
+    # returns the array
+    return array
 
 
 if __name__ == "__main__":
@@ -80,9 +118,14 @@ if __name__ == "__main__":
     # ratings_dict is dictionary of objects
     # ratings_list is list of dictionary representation
     ratings_dict, ratings_list = storage.all("MovieRatings")
-    # creates pivot table from ratings_list with users as rows, titles as columns
+    # creates pivot table from ratings_list
+    #    with users as rows, titles as columns
     #    and ratings where user and title meet
     pt = pivot_table(ratings_list)
     # prints pivot table for easy viewing
-    for row in pt:
-        print(row)
+    # for row in pt:
+    # print(row)
+    # turns pivot table into numpy.ndarray
+    array = to_matrix(pt)
+    # prints array for easy viewing
+    print(array)
