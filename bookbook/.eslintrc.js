@@ -54,6 +54,10 @@ module.exports = {
     "@typescript-eslint/no-non-null-assertion": "off",
     "react/jsx-filename-extension": [1, { extensions: [".tsx", "jsx"] }],
     "react/prop-types": 0,
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-call": "off"
   },
   settings: {
     react: {
