@@ -10,25 +10,21 @@ const InputTest = () => {
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // if (userId)
-    //   parseInt(userId)
     const rating = 10
-    // const url = userId === ''
-    //   ? `/api/getISBN/?title=${textInput}&rating=${rating}`
-    //   : `/api/getISBN/?title=${textInput}&rating=${rating}&userId=${userId}`
-    // fetch(`/api/getISBN/?title=${textInput}&rating=${rating}&userId=${userId}`)
-    fetch(`/api/getISBN/?title=${textInput}&rating=${rating}`)
-      // fetch(url)
-      // .then(res => console.log('from Input test', res))
+    const url = userId === ''
+      ? `/api/getISBN/?title=${textInput}&rating=${rating}`
+      : `/api/getISBN/?title=${textInput}&rating=${rating}&userId=${userId}`
+
+    fetch(url)
       .then(response => response.json())
       .then(data => setData(data))
       .catch(err => console.log(err))
     // call serverless function
-    console.log('DATA AFTER FETCH', data)
+    // console.log('DATA AFTER FETCH', data)
     // console.log('userId before setting state', userId)
-    // if (userId === '')
-    //   setUserId(data['userId'])
-    console.log(`You typed ${textInput}`)
+    if (userId === '')
+      setUserId(data['userId'])
+    // console.log(`You typed ${textInput}`)
   }
   // console.log(userId)
   // console.log(localStorage.getItem('userId'))
