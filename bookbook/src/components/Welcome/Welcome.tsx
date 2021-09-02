@@ -2,20 +2,32 @@ import React, { useState } from 'react'
 
 const InputTest = () => {
   const [textInput, setTextInput] = useState('')
-  const [data, setData] = useState([])
+  const [data, setData] = useState({})
+  const [userId, setUserId] = useState('')
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(event.target.value)
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    fetch(`https://venv-rouge-eight.vercel.app/api/${textInput}`)
+    const rating = 10
+    const url = userId === ''
+      ? `/api/getISBN/?title=${textInput}&rating=${rating}`
+      : `/api/getISBN/?title=${textInput}&rating=${rating}&userId=${userId}`
+
+    fetch(url)
       .then(response => response.json())
       .then(data => setData(data))
       .catch(err => console.log(err))
     // call serverless function
-    console.log(`You typed ${textInput}`)
+    // console.log('DATA AFTER FETCH', data)
+    // console.log('userId before setting state', userId)
+    if (userId === '')
+      setUserId(data['userId'])
+    // console.log(`You typed ${textInput}`)
   }
-  console.log(data)
+  // console.log(userId)
+  // console.log(localStorage.getItem('userId'))
   return (
     <form onSubmit={handleSubmit}>
       <label>
