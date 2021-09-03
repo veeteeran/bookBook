@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
+import Rating from '@material-ui/lab/Rating';
+import { Box, Typography } from '@material-ui/core';
 
-const InputTest = () => {
+const Welcome = () => {
   const [textInput, setTextInput] = useState('')
   const [data, setData] = useState({})
   const [userId, setUserId] = useState('')
+  const [rating, setRating] = useState(0)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(event.target.value)
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const rating = 10
+    // const rating = 10
     const url = userId === ''
       ? `/api/getISBN/?title=${textInput}&rating=${rating}`
       : `/api/getISBN/?title=${textInput}&rating=${rating}&userId=${userId}`
@@ -29,17 +32,28 @@ const InputTest = () => {
   // console.log(userId)
   // console.log(localStorage.getItem('userId'))
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <input
-          onChange={handleChange}
-          placeholder='Add a book'
-          type='text'
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input
+            onChange={handleChange}
+            placeholder='Add a book'
+            type='text'
+          />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <Box component="fieldset" mb={3} borderColor="transparent">
+        <Rating
+          name="simple-controlled"
+          value={rating / 2}
+          onChange={(event, newRating) => {
+            setRating(newRating * 2)
+          }}
         />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+      </Box>
+    </>
   )
 }
 
-export default InputTest
+export default Welcome
