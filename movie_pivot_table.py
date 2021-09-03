@@ -8,6 +8,7 @@ for recommender system for movies, querying from SQLAlchemy models
 from models import storage
 from sklearn.metrics.pairwise import cosine_similarity
 from surprise import KNNWithMeans
+from sys import argv
 import numpy as np
 import pandas as pd
 
@@ -81,7 +82,7 @@ def pivot_table(ratings_list):
     return pivot_table
 
 
-def to_matrix(pivot_table):
+def to_matrices(pivot_table, user_id):
     """
     Turns a list of dicts pivot table into a matrix
         representing user ratings of movies
@@ -89,38 +90,58 @@ def to_matrix(pivot_table):
     parameters:
         pivot_table [list of dicts]:
             represents the pivot table
+        user_id [int]:
+            value of user id finding recommendations for
 
     returns:
-        [Pandas DataFrame]:
-            DataFrame representation of the pivot table
+        data [Pandas DataFrame]:
+            DataFrame representation of the pivot table,
+                excluding user finding recommendation for
+        user [Pandas DataFrame]:
+            DataFrame representation of the pivot table,
+                specifically for user's ratings
     """
-    # matrix will be list of lists
+    # matrix will be list of lists of all user ratings
+    #     excluding the user finding recommendation for
     matrix = []
-    headings = []
+    # user_row will be list of specific user's rating
+    user_row = []
+    headings = ["ID"]
     # adds the keys from dicts as headings for matrix
     for title in pivot_table[0].keys():
-        headings.append(title)
-    # adds headings as first row of matrix
+        if title != "ID":
+            headings.append(title)
+    # adds headings as first row of matrix and user
     matrix.append(headings)
+    user_row.append(headings)
     # loops through each row of pivot table
     for row in pivot_table:
         new_row = []
         # adds values from row's dict to new row
-        for value in row.values():
-            new_row.append(value)
+        for value in headings:
+            new_row.append(row[value])
         # adds new row of values to matrix
-        matrix.append(new_row)
-    # transforms a list of lists (matrix) into numpy.ndarray
-    array = np.array(matrix, ndmin=2)
-    # turns numpy.ndarray into Pandas DataFrame
-    data = pd.DataFrame(array[1:])
+        if row["ID"] == user_id:
+            user_row.append(new_row)
+        else:
+            matrix.append(new_row)
+    # transforms a list of lists matrices into numpy.ndarray
+    data_array = np.array(matrix, ndmin=2)
+    user_array = np.array(user_row, ndmin=2)
+    # turns numpy.ndarray into Pandas DataFrames
+    data = pd.DataFrame(data_array[1:])
+    user = pd.DataFrame(user_array[1:])
     # adds headers as column names to DataFrame
     data.columns = headings
+    user.columns = headings
     # returns Pandas DataFrame representation of ratings matrix
-    return data
+    return data_array, user_array
 
 
 if __name__ == "__main__":
+    if len(argv) < 2:
+        raise TypeError(
+            "Missing argument for specific user id to get recs for")
     # gets list of all MovieRatings
     # ratings_dict is dictionary of objects
     # ratings_list is list of dictionary representation
@@ -132,9 +153,39 @@ if __name__ == "__main__":
     # prints pivot table for easy viewing
     # for row in pt:
     # print(row)
-    # turns pivot table into Pandas DataFrame
-    data = to_matrix(pt)
-    # prints the DataFrame for easy viewing
+    # turns pivot table into Pandas DataFrames
+    data, user = to_matrices(pt, int(argv[1]))
+    data_num = data[1:].astype(int)
+    user_num = user[1:].astype(int)
+    # prints the DataFrames for easy viewing
     print(data)
-    cos_sim = cosine_similarity(data)
+    print(user)
+    cos_sim = cosine_similarity(user_num, data_num)[0]
     print(cos_sim)
+    N = 1
+    sorted_cos_sim = sorted(cos_sim, reverse=True)
+    print(sorted_cos_sim)
+    print(cos_sim)
+    most_similar = sorted_cos_sim[:N]
+    print(most_similar)
+    indices = []
+    for index, similarity in enumerate(cos_sim):
+        if similarity in most_similar:
+            print("similarity: ", similarity, " & index: ", index)
+            indices.append(index)
+    print("------------------------")
+    for book_index, rating in enumerate(user_num[0]):
+        print(book_index, rating)
+        if rating == 0:
+            print("got here")
+            sum_numerator = 0
+            sum_divisor = 0
+            for sim_index in indices:
+                print(data_num[sim_index][book_index], " * ", cos_sim[sim_index])
+                sum_numerator += (data_num[sim_index][book_index] * cos_sim[sim_index])
+                sum_divisor += cos_sim[sim_index]
+            weighted_avg = sum_numerator / sum_divisor
+            print("weighted_avg: ", weighted_avg)
+            user[1][book_index] = "{}".format(round(weighted_avg))
+    print("------------------------")
+    print(user)
