@@ -6,7 +6,10 @@ for recommender system for movies, querying from SQLAlchemy models
 
 
 from models import storage
+from sklearn.metrics.pairwise import cosine_similarity
+from surprise import KNNWithMeans
 import numpy as np
+import pandas as pd
 
 
 def pivot_table(ratings_list):
@@ -88,8 +91,8 @@ def to_matrix(pivot_table):
             represents the pivot table
 
     returns:
-        [numpy.ndarray]:
-            matrix representation of the pivot table
+        [Pandas DataFrame]:
+            DataFrame representation of the pivot table
     """
     # matrix will be list of lists
     matrix = []
@@ -109,8 +112,12 @@ def to_matrix(pivot_table):
         matrix.append(new_row)
     # transforms a list of lists (matrix) into numpy.ndarray
     array = np.array(matrix, ndmin=2)
-    # returns the array
-    return array
+    # turns numpy.ndarray into Pandas DataFrame
+    data = pd.DataFrame(array[1:])
+    # adds headers as column names to DataFrame
+    data.columns = headings
+    # returns Pandas DataFrame representation of ratings matrix
+    return data
 
 
 if __name__ == "__main__":
@@ -125,7 +132,9 @@ if __name__ == "__main__":
     # prints pivot table for easy viewing
     # for row in pt:
     # print(row)
-    # turns pivot table into numpy.ndarray
-    array = to_matrix(pt)
-    # prints array for easy viewing
-    print(array)
+    # turns pivot table into Pandas DataFrame
+    data = to_matrix(pt)
+    # prints the DataFrame for easy viewing
+    print(data)
+    cos_sim = cosine_similarity(data)
+    print(cos_sim)
