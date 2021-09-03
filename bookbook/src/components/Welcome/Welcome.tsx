@@ -1,12 +1,26 @@
-import React, { useState } from 'react'
+import { Box } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
-import { Box, Typography } from '@material-ui/core';
+import React, { useState } from 'react'
+
+const labels = {
+  0.5: 'Useless',
+  1: 'Useless+',
+  1.5: 'Poor',
+  2: 'Poor+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Good',
+  4: 'Good+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+}
 
 const Welcome = () => {
   const [textInput, setTextInput] = useState('')
   const [data, setData] = useState({})
   const [userId, setUserId] = useState('')
   const [rating, setRating] = useState(0)
+  const [hover, setHover] = useState(-1)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(event.target.value)
@@ -50,7 +64,12 @@ const Welcome = () => {
           onChange={(event, newRating) => {
             setRating(newRating * 2)
           }}
+          precision={0.5}
+          onChangeActive={(event, newHover) => {
+            setHover(newHover);
+          }}
         />
+        {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
       </Box>
     </>
   )
