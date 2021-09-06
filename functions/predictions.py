@@ -53,11 +53,11 @@ def predict_ratings(user, data_num, user_num, indices, cos_sim):
                 # add product of other rating & similarity factor to numerator
                 sum_numerator += (other_user_rating * similarity_factor)
                 # add similarity factor to denominator
-                sum_divisor += similarity_factor
+                sum_denominator += similarity_factor
             # calculates the weighted average to generate predicted rating
-            weighted_avg = sum_numerator / sum_divisor
+            weighted_avg = sum_numerator / sum_denominator
             # print weighted average for easy viewing
-            print("weighted_avg: ", weighted_avg)
+            # print("weighted_avg: ", weighted_avg)
             # update specific user's rating of book at book_index with
             #    weighted average, rounded to nearest digit
             user[1][book_index] = "{}".format(round(weighted_avg))
