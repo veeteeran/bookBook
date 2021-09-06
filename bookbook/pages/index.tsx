@@ -1,3 +1,4 @@
+import Footer from '../src/components/Footer/Footer'
 import Header from '../src/components/Header/Header'
 import Welcome from '../src/components/Welcome/Welcome'
 import styles from "../styles/Home.module.css"
@@ -19,10 +20,7 @@ export default function Home() {
         {/* <h1 className={styles.title}>Welcome to bookBook</h1> */}
         <Welcome />
       </main>
-
-      <footer className={styles.footer}>
-        <p>Footer</p>
-      </footer>
+      <Footer />
     </div>
   )
 }
