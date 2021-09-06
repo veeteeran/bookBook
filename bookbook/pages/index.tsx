@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <Header />
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to bookBook</h1>
+        {/* <h1 className={styles.title}>Welcome to bookBook</h1> */}
         <Welcome />
       </main>
 
