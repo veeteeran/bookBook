@@ -16,7 +16,11 @@
   }
   form {
     width: 100%;
-    padding-left: 20vw;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     input {
       width: 63.5%;
       height: 2.5rem;
@@ -45,12 +49,15 @@
   }
   button {
     width: 14vw;
-    // height: 3vw;
     border-radius: 3vw;
     background-color: #CB6318;
     color: #313639;
     font-family: 'Sue Ellen Francisco';
     font-size: 2vw;
     border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #7CAA2D;
   }
 }

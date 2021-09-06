@@ -1,5 +1,5 @@
-import { Box } from '@material-ui/core'
-// import Header from '../Header/Header'
+import { Box, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import Rating from '@material-ui/lab/Rating'
 import React, { useState } from 'react'
 const styles = require('./welcome.module.scss')
@@ -16,6 +16,12 @@ const labels = {
   4.5: 'Excellent',
   5: 'Excellent+',
 }
+const useStyles = makeStyles({
+  root: {
+    marginBottom: 0,
+    height: '25%'
+  }
+})
 
 const Welcome = () => {
   const [textInput, setTextInput] = useState('')
@@ -29,7 +35,6 @@ const Welcome = () => {
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // const rating = 10
     const url = userId === ''
       ? `/api/getISBN/?title=${textInput}&rating=${rating}`
       : `/api/getISBN/?title=${textInput}&rating=${rating}&userId=${userId}`
@@ -47,34 +52,33 @@ const Welcome = () => {
   }
   // console.log(userId)
   // console.log(localStorage.getItem('userId'))
+
+  const classes = useStyles()
   return (
     <div className={styles.section}>
       <h1 className={styles.title}>Feed me your favorites</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            onChange={handleChange}
-            placeholder='A Tale of Two Cities'
-            type='text'
-          />
-        </label>
-        {/* <button type="submit">Submit</button> */}
-      </form>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Rating
-          name="simple-controlled"
-          value={rating / 2}
-          onChange={(event, newRating) => {
-            setRating(newRating * 2)
-          }}
-          precision={0.5}
-          onChangeActive={(event, newHover) => {
-            setHover(newHover);
-          }}
+        <input
+          onChange={handleChange}
+          placeholder='A Tale of Two Cities'
+          type='text'
         />
-        {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
-      </Box>
-      <button className={styles.button} type="submit">Submit</button>
+        <Box className={classes.root} component="fieldset" mb={3} borderColor="transparent">
+          <Rating
+            name="simple-controlled"
+            value={rating / 2}
+            onChange={(event, newRating) => {
+              setRating(newRating * 2)
+            }}
+            precision={0.5}
+            onChangeActive={(event, newHover) => {
+              setHover(newHover);
+            }}
+          />
+          {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
+        </Box>
+        <Button>Submit</Button>
+      </form>
     </div>
   )
 }
