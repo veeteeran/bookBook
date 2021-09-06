@@ -31,13 +31,13 @@ def similar_ratings(data_num, user_num, N=1):
     #    all other users
     cos_sim = cosine_similarity(user_num, data_num)[0]
     # print all cosine similiarites for easy viewing
-    print(cos_sim)
+    # print(cos_sim)
     # sorts the similarities by most similar first
     sorted_cos_sim = sorted(cos_sim, reverse=True)
     # determines the top N most similar through slicing
     most_similar = sorted_cos_sim[:N]
     # print the N most similar similiarites for easy viewing
-    print(most_similar)
+    # print(most_similar)
     # start list to save indices where most similar users can be found
     indices = []
     # loop through all cosine similarities
