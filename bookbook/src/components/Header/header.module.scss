@@ -1,1 +1,28 @@
-// Soon to be css
+.section {
+  width: 100%;
+  height: 15vw;
+  background-color: #7CAA2D;
+  display: flex;
+  align-items: center;
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .icon {
+      width: 5vw;
+      height: 5vw;
+      background-color: gray;
+    }
+    .title {
+      font-family: 'Thasadith', sans-serif;
+      font-size: 7.5vw;
+      color: #FFBB00;
+    }
+    .getList {
+      width: 5vw;
+      height: 5vw;
+      background-color: gray;
+    }
+  }
+}

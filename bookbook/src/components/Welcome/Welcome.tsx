@@ -1,6 +1,8 @@
-import { Box } from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
+import { Box } from '@material-ui/core'
+// import Header from '../Header/Header'
+import Rating from '@material-ui/lab/Rating'
 import React, { useState } from 'react'
+const styles = require('./welcome.module.scss')
 
 const labels = {
   0.5: 'Useless',
@@ -46,16 +48,17 @@ const Welcome = () => {
   // console.log(userId)
   // console.log(localStorage.getItem('userId'))
   return (
-    <>
+    <div className={styles.section}>
+      <h1 className={styles.title}>Feed me your favorites</h1>
       <form onSubmit={handleSubmit}>
         <label>
           <input
             onChange={handleChange}
-            placeholder='Add a book'
+            placeholder='A Tale of Two Cities'
             type='text'
           />
         </label>
-        <button type="submit">Submit</button>
+        {/* <button type="submit">Submit</button> */}
       </form>
       <Box component="fieldset" mb={3} borderColor="transparent">
         <Rating
@@ -71,7 +74,8 @@ const Welcome = () => {
         />
         {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
       </Box>
-    </>
+      <button className={styles.button} type="submit">Submit</button>
+    </div>
   )
 }
 
