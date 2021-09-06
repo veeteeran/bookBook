@@ -38,7 +38,7 @@ if __name__ == "__main__":
     data_num = data[1:].astype(int)
     user_num = user[1:].astype(int)
     indices, cos_sim = similar_ratings(data_num, user_num)
-    user_predicitions, missing_ratings = predict_ratings(
+    user_predictions, missing_ratings = predict_ratings(
         user, data_num, user_num, indices, cos_sim)
     # prints the updated user for easy viewing
     print(user_predictions)
