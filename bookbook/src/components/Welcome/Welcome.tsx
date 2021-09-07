@@ -52,7 +52,7 @@ const Welcome = () => {
     setRating(0)
     setTitle('')
   }, [url]);
-
+  console.log(`DATA AFTER FETCH: ${data}`)
   const classes = useStyles()
   return (
     <div className={styles.section}>
