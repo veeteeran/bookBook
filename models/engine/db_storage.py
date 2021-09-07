@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """ this module builds DBStorage class from MySQLdb and SQLAlchemy"""
 from models.base_model import BaseModel, Base
-from models.movie_ratings import MovieRatings
+from models.book_ratings import BookRatings
 from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 # establishes dictionary reference between class name and class itself
-classes = {"MovieRatings": MovieRatings}
+classes = {"BookRatings": BookRatings}
 
 
 class DBStorage():
@@ -22,24 +22,14 @@ class DBStorage():
 
     def __init__(self):
         """ this method creates engine that links to MySQL database """
-        # sets class variables from os environment variables set by user
-        # TEST_HOST = getenv('TEST_HOST')
-        # TEST_USER = getenv('TEST_USER')
-        # TEST_PWD = getenv('TEST_PWD')
-        # TEST_DB = getenv('TEST_DB')
-        # creates the engine to MySQL db with above variables
+        # creates the engine to MySQL database
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(
-                                          'bookTest',
+                                          'bookBook',
                                           'bookWorm',
                                           'localhost',
-                                          'test_db'),
+                                          'bookBook_main_db'),
                                       pool_pre_ping=True)
-        # gets environment variable to determine if testing or not
-        # if testing, drops previous metadata
-        # IS_TEST = getenv('IS_TEST')
-        # if IS_TEST == "true":
-        # Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
         """
@@ -58,24 +48,28 @@ class DBStorage():
                 objs = self.__session.query(classes[class_name]).all()
                 # for each object, sets key and saves key with obj as value
                 for obj in objs:
-                    # this will need to be adjusted for Books class in future
-                    key = "{}:{}.{}".format("MovieRatings",
-                                            obj.ID,
-                                            obj.Title)
+                    # need to add condition if add additional models
+                    if obj.__class__.__name__ == "BookRatings":
+                        key = "{}:{}.{}".format("BookRatings",
+                                                obj.ID,
+                                                obj.ISBN)
                     all_dict[key] = obj
                     dictionary = obj.to_dict()
                     del dictionary["__class__"]
                     all_list.append(dictionary)
         # returns empty dictionary or dict set by matching objs from query
+        # returns empty list or list of matching objects' dictionaries
         return (all_dict, all_list)
 
-    def get(self, cls=None, id=None, title=None):
+    def get_BookRating(self, cls="BookRating", ID=None, ISBN=None):
         """
-        retrieves specific object by class name (cls) and ISBN
+        retrieves specific BookRating object by id and ISBN
+
+        method currently set up for BookRatings, but can be modified to other models
+        if parameters are adjusted (ex. Books will need ISBN, but not ID)
         """
         # if parameters not specified, returns None
-        # this will need to be adjusted for Books class in future
-        if cls is None or title is None or id is None:
+        if cls != "BookRating" or ISBN is None or ID is None:
             return None
         # call all method with specified class to get dictionary
         # of all objects of that class in current MySQL session
@@ -84,8 +78,8 @@ class DBStorage():
         if all_objs is not {}:
             for obj in all_objs.values():
                 # if found matching id, return the retrieved object
-                # this will need to be adjusted for Books class in future
-                if title == obj.title and ID == obj.id:
+                # this will need to be adjusted for other models if needed
+                if ISBN == obj.ISBN and ID == obj.ID:
                     return obj
         # if no matching object was found in MySQL session, return None
         return None
