@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Tests the Singular Value Decomposition (SVD) method
-for recommender system for movies, querying from SQLAlchemy models
+Tests recommender system for movies, querying from SQLAlchemy models
 """
 
 
