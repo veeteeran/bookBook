@@ -47,6 +47,10 @@ def predict_ratings(user, data_num, user_num, indices, cos_sim):
                 #    at most similar user's index,
                 #    for the book currently missing rating for
                 other_user_rating = data_num[sim_index][book_index]
+                # if other user's rating is 0, this is a placeholder,
+                #    not an actual rating, so it is skipped
+                if other_user_rating is 0:
+                    continue
                 # similarity factor comes from cosine similarity,
                 #    at most similar user's index
                 similarity_factor = cos_sim[sim_index]
