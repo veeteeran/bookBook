@@ -4,7 +4,8 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer
 
 class BookRatings(BaseModel, Base):
-  """ this module defines BaseRating inherited by all classes
+  """
+  this module defines BookRatings
   """
   __tablename__ = 'BookRatings'
   ISBN = Column(String(13),
