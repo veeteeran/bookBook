@@ -9,6 +9,7 @@ from functions.setup_matrices import pivot_table
 from functions.setup_matrices import to_numpy
 from functions.similarity import similar_ratings
 from functions.predictions import predict_ratings
+from functions.parse import get_recommendations
 from models import storage
 from sys import argv
 
@@ -38,9 +39,12 @@ if __name__ == "__main__":
     data_num = data[1:].astype(int)
     user_num = user[1:].astype(int)
     indices, cos_sim = similar_ratings(data_num, user_num)
-    user_predictions, missing_ratings = predict_ratings(
+    user_predictions, predicted_indices = predict_ratings(
         user, data_num, user_num, indices, cos_sim)
     # prints the updated user for easy viewing
-    print(user_predictions)
+    # print(user_predictions)
     # prints the list of indices where book rating was predicted
-    print(missing_ratings)
+    # print(predicted_indices)
+    sorted_ISBNs = get_recommendations(user_predictions, predicted_indices)
+    # prints the sorted ISBN recommendations for easy viewing
+    print(sorted_ISBNs)
