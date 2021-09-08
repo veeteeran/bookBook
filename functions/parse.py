@@ -39,6 +39,8 @@ def get_recommendations(user_predictions, predicted_indices, N=10):
     #     to cap maximum number of recommendations
     if len(predicted_ratings) > N:
         sorted_predicted_ratings = sorted_predicted_rating[:N]
+    # prints sorted predicted ratings for easy viewing
+    # print(sorted_predicted_ratings)
     # sorted_ISBNs will be sorted list of only book ISBNs
     sorted_ISBNs = []
     # loop through sorted predicted ratings to get ISBN value
