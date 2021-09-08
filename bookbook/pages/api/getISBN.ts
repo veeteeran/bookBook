@@ -3,14 +3,14 @@ import executeQuery from '../../util/db'
 export default async (req, res) => {
   try {
     const results = await executeQuery({
-      query: 'SELECT ISBN FROM Books WHERE Title=?',
+      query: 'SELECT ISBN FROM Books WHERE Title=? ORDER BY PublicationYear DESC',
       values: req.query.title,
     })
     let newId = 0
     if (results && results.length > 0) {
       if (!req.query.userId) {
         const lastId = await executeQuery({
-          query: 'SELECT ID FROM BookRatings order by id desc limit 1',
+          query: 'SELECT ID FROM BookRatings ORDER BY id DESC LIMIT 1',
           values: []
         })
         newId = (parseInt(lastId[0].ID) + 1)
