@@ -2,6 +2,7 @@ import { Box, Button, CircularProgress } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Rating from '@material-ui/lab/Rating'
 import React, { useEffect, useState } from 'react'
+// import BookCarousel from '../Carousel/Carousel'
 const styles = require('./welcome.module.scss')
 
 const labels = {
@@ -106,6 +107,7 @@ const Welcome = () => {
           </form>
         </>
       }
+      {/* <BookCarousel /> */}
     </div>
   )
 }

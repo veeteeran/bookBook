@@ -1,0 +1,13 @@
+.section {
+  width: 100%;
+  height: 10vw;
+  .container {
+    .image {
+      width: 3vw;
+      height: 3vw;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+}
