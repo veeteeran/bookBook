@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ this module builds BookRatings class """
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, Integer
+from sqlalchemy import Column, Integer, String
 
 class BookRatings(BaseModel, Base):
   """
