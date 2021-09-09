@@ -1,7 +1,7 @@
 .vercel
 
 # dependencies Python
-/bin
+# /bin
 /lib
 
 # Byte-compiled / optimized / DLL files
