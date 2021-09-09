@@ -7,24 +7,17 @@ const BookCarousel = () => {
   const [booksData, setBooksData] = useState([])
   const [booksArray, setBooksArray] = useState([])
 
-  // const fetchData = async () => {
-  //   await fetch(`/api/getBookData`)
-  //     .then(response => response.json())
-  //     .then(data => setBooksData(data))
-  //     .catch(err => console.log(err))
-  // }
-
-  // console.log(`BOOKSDATA:`, booksData)
-
   const createCarouselArray = (data) => {
     return data.map((book, i) => (
       {
         id: `item-${i + 1}`,
         renderItem:
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-          }} >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              // filter: 'blur(4px)',
+            }} >
             <div style={{
               backgroundImage: `url(${book.ImageLarge})`,
               width: '10vw',
@@ -41,12 +34,11 @@ const BookCarousel = () => {
   }
 
   const doIt = () => {
-    // fetchData()
     const foo = createCarouselArray(booksData)
     setBooksArray(foo)
     setListExists(true)
   }
-  console.log(`bOOKSaRRAY: `, booksArray)
+
   useEffect(() => {
     let cancel = false
     const fetchData = async () => {
@@ -61,25 +53,40 @@ const BookCarousel = () => {
     }
   }, [])
 
-  const { carouselFragment } = useSpringCarousel({
+  const { carouselFragment, getIsActiveItem, getCurrentActiveItem, useListenToCustomEvent } = useSpringCarousel({
     withThumbs: false,
     withLoop: true,
     itemsPerSlide: listExists ? 5 : 1,
     initialStartingPosition: 'center',
     items: listExists ? booksArray : [{ id: "item-1", renderItem: <p>List does not exist</p> }]
   });
+  // console.log('Current active item', getCurrentActiveItem())
+
+  useListenToCustomEvent((data) => {
+    if (data.eventName === "onSlideChange") {
+      // Once we've narrowed the type of event
+      // you can safetely access to the props
+      // related to the current event.
+      const activeItem = getCurrentActiveItem()
+      console.log(data.currentItem === activeItem.index)
+    }
+  })
+
   return (
     <div className={styles.section}>
       {
         listExists
           ? <div style={{
-            width: '100%', display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr', overflow: 'hidden'
+            width: '100%',
+            display: 'grid',
+            // gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+            // overflow: 'hidden'
           }}>
             {carouselFragment}
           </div>
           : <button onClick={doIt}>Get List</button>
       }
+      {console.log('Active item === 1: ', getIsActiveItem('1'))}
     </div>
   )
 }
