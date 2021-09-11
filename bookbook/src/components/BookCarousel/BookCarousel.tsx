@@ -71,7 +71,6 @@ const BookCarousel = () => {
       console.log(data.currentItem === activeItem.index)
     }
   })
-
   return (
     <div className={styles.section}>
       {
@@ -86,7 +85,15 @@ const BookCarousel = () => {
           </div>
           : <button onClick={doIt}>Get List</button>
       }
-      {console.log('Active item === 1: ', getIsActiveItem('1'))}
+      {/* {console.log('Active item === 1: ', getIsActiveItem('1'))} */}
+      {/* <div style={{
+        width: '100%',
+        display: 'grid',
+        // gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+        // overflow: 'hidden'
+      }}>
+        {carouselFragment}
+      </div> */}
     </div>
   )
 }
