@@ -46,6 +46,11 @@
       color: #313639;
       font-weight: lighter;
     }
+    .buttonContainer {
+      display: grid;
+      grid-auto-flow: column;
+      column-gap: 3vw;
+    }
   }
   button {
     width: 14vw;

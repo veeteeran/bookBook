@@ -33,6 +33,7 @@ const Welcome = () => {
   const [hover, setHover] = useState(-1)
   const [url, setUrl] = useState(`/api/getISBN/?title=${title}&rating=${rating}`)
   const [isLoading, setIsLoading] = useState(false)
+  const [booksAdded, setBooksAdded] = useState(0)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value)
@@ -57,11 +58,11 @@ const Welcome = () => {
         .then(data => {
           setData(data)
           setUserId(data['userId'])
+          setBooksAdded(booksAdded + 1)
         })
         .catch(err => console.log(err))
     }
     fetchData()
-
     const timer = setTimeout(() => {
       setIsLoading(false)
       setRating(0)
@@ -82,7 +83,7 @@ const Welcome = () => {
         </>
         :
         <>
-          < h1 className={styles.title}>Feed me your favorites</h1>
+          <h1 className={styles.title}>Feed me your favorites</h1>
           <form onSubmit={handleSetUrl}>
             <input
               onChange={handleChange}
@@ -104,12 +105,17 @@ const Welcome = () => {
               />
               {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
             </Box>
-            <Button type='submit'>Submit</Button>
+            <div className={styles.buttonContainer}>
+              <Button type='submit'>Submit</Button>
+              {booksAdded >= 3
+                ? < BookCarousel />
+                : null
+              }
+            </div>
           </form>
         </>
       }
-      <BookCarousel />
-      <BookIcons />
+      <BookIcons booksAdded={booksAdded} />
     </div>
   )
 }

@@ -4,14 +4,12 @@ import { ImportContacts as ImportContactsIcon } from '@material-ui/icons'
 
 const styles = require('./bookIcons.module.scss')
 
-const BookIcons = () => {
-  const [success, setSuccess] = useState(0)
-
+const BookIcons = ({ booksAdded }) => {
   return (
     <div className={styles.section}>
       <ImportContactsIcon
         style={
-          success > 0
+          booksAdded > 0
             ? {
               color: '#4170b4',
               fontSize: '3.5vw'
@@ -24,7 +22,7 @@ const BookIcons = () => {
       />
       <ImportContactsIcon
         style={
-          success > 1
+          booksAdded > 1
             ? {
               color: '#4170b4',
               fontSize: '3.5vw'
@@ -37,7 +35,7 @@ const BookIcons = () => {
       />
       <ImportContactsIcon
         style={
-          success > 2
+          booksAdded > 2
             ? {
               color: '#4170b4',
               fontSize: '3.5vw'
