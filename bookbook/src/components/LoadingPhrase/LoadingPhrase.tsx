@@ -17,7 +17,7 @@ const LoadingPhrase = () => {
       <blockquote className={styles.loadingQuote}>
         <p>{loadingPhrase[0]}</p>
       </blockquote>
-      <figcaption className={styles.caption}> -{loadingPhrase[1]}</figcaption>
+      <p className={styles.caption}> -{loadingPhrase[1]}</p>
       <CircularProgress />
     </div>
   )
