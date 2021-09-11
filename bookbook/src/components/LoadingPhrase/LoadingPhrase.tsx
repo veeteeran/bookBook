@@ -39,7 +39,6 @@ const LoadingPhrase = ({ data, isLoading }) => {
             : <div className={styles.sadBook} />
       }
     </div >
-
   )
 }
 
