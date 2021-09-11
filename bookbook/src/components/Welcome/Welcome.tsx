@@ -8,16 +8,16 @@ import LoadingPhrase from '../LoadingPhrase/LoadingPhrase'
 const styles = require('./welcome.module.scss')
 
 const labels = {
-  0.5: 'Useless',
-  1: 'Useless+',
-  1.5: 'Poor',
-  2: 'Poor+',
-  2.5: 'Ok',
-  3: 'Ok+',
-  3.5: 'Good',
-  4: 'Good+',
-  4.5: 'Excellent',
-  5: 'Excellent+',
+  0.5: "Glad that's over",
+  1: "Glad that's over",
+  1.5: 'Not terrible',
+  2: 'Not terrible',
+  2.5: 'Pretty good',
+  3: 'Pretty good',
+  3.5: 'Told all my friends',
+  4: 'Told all my friends',
+  4.5: 'Own a copy',
+  5: 'Own a copy',
 }
 const useStyles = makeStyles({
   root: {
@@ -36,6 +36,7 @@ const Welcome = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [booksAdded, setBooksAdded] = useState(0)
   const [showCarousel, setShowCarousel] = useState(false)
+  const [bookAdded, setBookAdded] = useState(false)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value)
@@ -68,11 +69,19 @@ const Welcome = () => {
       setIsLoading(false)
       setRating(0)
       setTitle('')
+      if (data)
+        setBookAdded(true)
     }, 7500)
 
     return () => clearTimeout(timer)
   }, [url]);
   console.log('DATA AFTER FETCH:', data)
+  console.log('Book added:', bookAdded)
+
+  // useEffect(() => {
+
+  // })
+
   const classes = useStyles()
   return (
     <div className={styles.section}>
