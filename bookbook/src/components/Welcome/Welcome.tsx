@@ -33,7 +33,7 @@ const Welcome = () => {
   const [hover, setHover] = useState(-1)
   const [url, setUrl] = useState(`/api/getISBN/?title=${title}&rating=${rating}`)
   const [isLoading, setIsLoading] = useState(false)
-  const [booksAdded, setBooksAdded] = useState(3)
+  const [booksAdded, setBooksAdded] = useState(0)
   const [showCarousel, setShowCarousel] = useState(false)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
