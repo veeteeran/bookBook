@@ -4,7 +4,7 @@ const db = mysql({
     host: '127.0.0.1',
     database: 'bB_database',
     user: 'root',
-    password: '2164vsp*'
+    password: ''
   }
 })
 
