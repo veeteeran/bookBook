@@ -36,7 +36,6 @@ const Welcome = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [booksAdded, setBooksAdded] = useState(0)
   const [showCarousel, setShowCarousel] = useState(false)
-  const [bookAdded, setBookAdded] = useState(false)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value)
@@ -69,24 +68,17 @@ const Welcome = () => {
       setIsLoading(false)
       setRating(0)
       setTitle('')
-      if (data)
-        setBookAdded(true)
-    }, 7500)
+    }, 15000)
 
     return () => clearTimeout(timer)
   }, [url]);
   console.log('DATA AFTER FETCH:', data)
-  console.log('Book added:', bookAdded)
-
-  // useEffect(() => {
-
-  // })
 
   const classes = useStyles()
   return (
     <div className={styles.section}>
       {isLoading
-        ? <LoadingPhrase />
+        ? <LoadingPhrase data={data} isLoading={isLoading} />
         : !showCarousel
           ? <>
             <h1 className={styles.title}>Feed me your favorites</h1>
@@ -125,6 +117,7 @@ const Welcome = () => {
           </>
           : < BookCarousel />
       }
+      {/* <LoadingPhrase data='foo' isLoading={true} /> */}
     </div>
   )
 }

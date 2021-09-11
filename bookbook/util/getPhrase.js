@@ -5,7 +5,24 @@ const loadingPhrases = [
   'At the still point, there the dance is - T.S. Eliot',
   "If you can't annoy somebody, there is little point in writing - Kingsley Amis",
   "It doesn't matter who you are or what you look like, so long as somebody loves you - Roald Dahl",
-  "And now that you don't have to be perfect, you can be good - John Steinbeck"]
+  "And now that you don't have to be perfect, you can be good - John Steinbeck"
+]
+
+const bookAddedPhrases = [
+  'Recommending this to my enemy, thanks.',
+  "We didn't love it either.",
+  "It's good.",
+  "Wow, you've got great taste!",
+  "That's definitely a must-read!"
+]
+
+const bookRejectedPhrases = [
+  "Hmm, bookEater must have gotten that one.",
+  "I don't know that title — what else can you recommend?",
+  "That book may have been shelved incorrectly.",
+  "I loaned that book to Bigby and never got it back.",
+  "Your literary tastes are distinguished! I'll see if we can get it on loan."
+]
 
 // the below is heavily based on https://andrew.hedges.name/experiments/diceware/
 
@@ -40,5 +57,13 @@ function getRandomInt(min, max) {
 }
 
 export function getLoadingPhrase() {
+  return loadingPhrases[getRandomInt(0, loadingPhrases.length)].split('-')
+}
+
+export function getbookAddedPhrase(index) {
+  return bookAddedPhrases[index]
+}
+
+export function getbookRejectedPhrase() {
   return loadingPhrases[getRandomInt(0, loadingPhrases.length)].split('-')
 }
