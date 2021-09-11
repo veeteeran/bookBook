@@ -1,11 +1,5 @@
 const loadingPhrases = [
-  'The only thing worse than being talked about is not being talked about – Oscar Wilde',
-  'You are your best thing - Toni Morrison',
-  'Even if you’re on the right track, you’ll get run over if you just sit there – Will Rogers',
-  'At the still point, there the dance is - T.S. Eliot',
-  "If you can't annoy somebody, there is little point in writing - Kingsley Amis",
-  "It doesn't matter who you are or what you look like, so long as somebody loves you - Roald Dahl",
-  "And now that you don't have to be perfect, you can be good - John Steinbeck"]
+  '"The only thing worse than being talked about is not being talked about." - Oscar Wilde', '"You are your best thing." - Toni Morrison', '"Even if you\'re on the right track, you\'ll get run over if you just sit there." - Will Rogers', '"At the still point, there the dance is." - T.S. Eliot', '"If you can\'t annoy somebody, there is little point in writing." - Kingsley Amis', '"It doesn\'t matter who you are or what you look like, so long as somebody loves you." - Roald Dahl', '"And now that you don\'t have to be perfect, you can be good." - John Steinbeck']
 
 // the below is heavily based on https://andrew.hedges.name/experiments/diceware/
 
