@@ -10,7 +10,7 @@ const BookCarousel = () => {
   const createCarouselArray = (data) => {
     return data.map((book, i) => (
       {
-        id: `item-${i + 1}`,
+        id: `item-${parseInt(i) + 1}`,
         renderItem:
           <div
             style={{
@@ -60,7 +60,7 @@ const BookCarousel = () => {
     initialStartingPosition: 'center',
     items: listExists ? booksArray : [{ id: "item-1", renderItem: <p>List does not exist</p> }]
   });
-  // console.log('Current active item', getCurrentActiveItem())
+  console.log('Current active item', getCurrentActiveItem())
 
   useListenToCustomEvent((data) => {
     if (data.eventName === "onSlideChange") {
@@ -85,7 +85,7 @@ const BookCarousel = () => {
           </div>
           : <button onClick={doIt}>Get List</button>
       }
-      {/* {console.log('Active item === 1: ', getIsActiveItem('1'))} */}
+      {console.log('Active item === 1: ', getIsActiveItem('1'))}
       {/* <div style={{
         width: '100%',
         display: 'grid',
