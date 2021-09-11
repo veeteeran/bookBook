@@ -1,9 +1,10 @@
-import { Box, Button, CircularProgress } from '@material-ui/core'
+import { Box, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Rating from '@material-ui/lab/Rating'
 import React, { useEffect, useState } from 'react'
 import BookCarousel from '../BookCarousel/BookCarousel'
 import BookIcons from '../BookIcons/BookIcons'
+import LoadingPhrase from '../LoadingPhrase/LoadingPhrase'
 const styles = require('./welcome.module.scss')
 
 const labels = {
@@ -53,7 +54,6 @@ const Welcome = () => {
     }
     const fetchData = async () => {
       setIsLoading(true)
-
       await fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -68,7 +68,7 @@ const Welcome = () => {
       setIsLoading(false)
       setRating(0)
       setTitle('')
-    }, 2000)
+    }, 7500)
 
     return () => clearTimeout(timer)
   }, [url]);
@@ -77,11 +77,7 @@ const Welcome = () => {
   return (
     <div className={styles.section}>
       {isLoading
-        ?
-        <>
-          <h1 className={styles.title}>Okay cutie!</h1>
-          <CircularProgress />
-        </>
+        ? <LoadingPhrase />
         : !showCarousel
           ? <>
             <h1 className={styles.title}>Feed me your favorites</h1>
