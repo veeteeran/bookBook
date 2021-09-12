@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { CircularProgress } from '@material-ui/core'
-import { getLoadingPhrase } from '../../../util/getPhrase'
+import {
+  getBookAddedPhrase,
+  getLoadingPhrase,
+  getBookRejectedPhrase
+} from '../../../util/getPhrase'
 
 const styles = require('./loadingPhrase.module.scss')
 
-const LoadingPhrase = ({ data }) => {
+const LoadingPhrase = ({ data, rating }) => {
   const [loadingPhrase, setLoadingPhrase] = useState([])
   const [bookAdded, setBookAdded] = useState(false)
   const [isbn, setIsbn] = useState('')
@@ -35,8 +39,14 @@ const LoadingPhrase = ({ data }) => {
             <CircularProgress />
           </>
           : data.isbn !== isbn
-            ? <div className={styles.happyBook} />
-            : <div className={styles.sadBook} />
+            ? <>
+              <div className={styles.happyBook} />
+              <p>{getBookAddedPhrase(rating - 1)}</p>
+            </>
+            : <>
+              <div className={styles.sadBook} />
+              <p>{getBookRejectedPhrase()}</p>
+            </>
       }
     </div >
   )

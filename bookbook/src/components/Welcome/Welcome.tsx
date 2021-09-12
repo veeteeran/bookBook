@@ -78,7 +78,7 @@ const Welcome = () => {
   return (
     <div className={styles.section}>
       {isLoading
-        ? <LoadingPhrase data={data} />
+        ? <LoadingPhrase data={data} rating={Math.round(rating / 2)} />
         : !showCarousel
           ? <>
             <h1 className={styles.title}>Feed me your favorites</h1>
