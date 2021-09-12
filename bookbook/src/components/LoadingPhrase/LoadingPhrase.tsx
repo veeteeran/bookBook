@@ -4,27 +4,27 @@ import { getLoadingPhrase } from '../../../util/getPhrase'
 
 const styles = require('./loadingPhrase.module.scss')
 
-const LoadingPhrase = ({ data, isLoading }) => {
+const LoadingPhrase = ({ data }) => {
   const [loadingPhrase, setLoadingPhrase] = useState([])
   const [bookAdded, setBookAdded] = useState(false)
+  const [isbn, setIsbn] = useState('')
 
   useEffect(() => {
     setLoadingPhrase(getLoadingPhrase())
+    setIsbn(data.isbn)
     const timer = setTimeout(() => {
-      if (data)
-        setBookAdded(true)
-    }, 7500)
+      setBookAdded(true)
+    }, 5000)
 
     return () => {
       clearTimeout(timer)
     }
-  }, [bookAdded])
-  console.log('bookAdded inside LoadingPhrase: ', bookAdded)
-  console.log('isLoading inside LoadingPhrase: ', isLoading)
+  }, [])
+
   return (
     <div className={styles.section}>
       {
-        isLoading && !bookAdded
+        !bookAdded
           ?
           <>
             <div className={styles.curiousBook} />
@@ -34,7 +34,7 @@ const LoadingPhrase = ({ data, isLoading }) => {
             <figcaption className={styles.caption}> -{loadingPhrase[1]}</figcaption>
             <CircularProgress />
           </>
-          : bookAdded
+          : data.isbn !== isbn
             ? <div className={styles.happyBook} />
             : <div className={styles.sadBook} />
       }

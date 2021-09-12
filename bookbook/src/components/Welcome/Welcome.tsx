@@ -68,17 +68,17 @@ const Welcome = () => {
       setIsLoading(false)
       setRating(0)
       setTitle('')
-    }, 15000)
+    }, 10000)
 
     return () => clearTimeout(timer)
   }, [url]);
-  console.log('DATA AFTER FETCH:', data)
+  // console.log('DATA AFTER FETCH:', data)
 
   const classes = useStyles()
   return (
     <div className={styles.section}>
       {isLoading
-        ? <LoadingPhrase data={data} isLoading={isLoading} />
+        ? <LoadingPhrase data={data} />
         : !showCarousel
           ? <>
             <h1 className={styles.title}>Feed me your favorites</h1>
