@@ -18,7 +18,7 @@ const LoadingPhrase = ({ data, rating }) => {
     setIsbn(data.isbn)
     const timer = setTimeout(() => {
       setBookAdded(true)
-    }, 5000)
+    }, 3500)
 
     return () => {
       clearTimeout(timer)

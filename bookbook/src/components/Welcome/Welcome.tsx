@@ -68,7 +68,7 @@ const Welcome = () => {
       setIsLoading(false)
       setRating(0)
       setTitle('')
-    }, 10000)
+    }, 6000)
 
     return () => clearTimeout(timer)
   }, [url]);
