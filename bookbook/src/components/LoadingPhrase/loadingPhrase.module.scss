@@ -27,4 +27,20 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+  .happyBook {
+    background-image: url('../../../static/happyBook-removebg.png');
+    width: 10vw;
+    height: 10vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .sadBook {
+    background-image: url('../../../static/sadBook-removebg.png');
+    width: 10vw;
+    height: 10vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }

@@ -8,16 +8,16 @@ import LoadingPhrase from '../LoadingPhrase/LoadingPhrase'
 const styles = require('./welcome.module.scss')
 
 const labels = {
-  0.5: 'Useless',
-  1: 'Useless+',
-  1.5: 'Poor',
-  2: 'Poor+',
-  2.5: 'Ok',
-  3: 'Ok+',
-  3.5: 'Good',
-  4: 'Good+',
-  4.5: 'Excellent',
-  5: 'Excellent+',
+  0.5: "Glad that's over",
+  1: "Glad that's over",
+  1.5: 'Not terrible',
+  2: 'Not terrible',
+  2.5: 'Pretty good',
+  3: 'Pretty good',
+  3.5: 'Told all my friends',
+  4: 'Told all my friends',
+  4.5: 'Own a copy',
+  5: 'Own a copy',
 }
 const useStyles = makeStyles({
   root: {
@@ -68,16 +68,17 @@ const Welcome = () => {
       setIsLoading(false)
       setRating(0)
       setTitle('')
-    }, 7500)
+    }, 6000)
 
     return () => clearTimeout(timer)
   }, [url]);
-  console.log('DATA AFTER FETCH:', data)
+  // console.log('DATA AFTER FETCH:', data)
+
   const classes = useStyles()
   return (
     <div className={styles.section}>
       {isLoading
-        ? <LoadingPhrase />
+        ? <LoadingPhrase data={data} rating={Math.round(rating / 2)} />
         : !showCarousel
           ? <>
             <h1 className={styles.title}>Feed me your favorites</h1>
@@ -116,6 +117,7 @@ const Welcome = () => {
           </>
           : < BookCarousel />
       }
+      {/* <LoadingPhrase data='foo' isLoading={true} /> */}
     </div>
   )
 }
