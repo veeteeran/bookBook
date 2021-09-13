@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSpringCarousel } from 'react-spring-carousel-js'
-import { CircularProgress, Link } from '@material-ui/core'
+import { CircularProgress } from '@material-ui/core'
 import {
   LocalLibrary as LocalLibraryIcon,
   Storefront as StorefrontIcon,
