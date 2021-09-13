@@ -115,7 +115,7 @@ const Welcome = () => {
                   }}
                 />
                 {rating !== null &&
-                  <Box ml={2} style={{ textAlign: 'center' }}>
+                  <Box style={{ textAlign: 'center' }}>
                     {labels[hover !== -1 ? hover : rating]}
                   </Box>
                 }
