@@ -11,6 +11,14 @@ const rejectionPhrases = [
   "Your literary tastes are distinguished! I'll see if we can get it on loan."
 ]
 
+const carouselLoadingPhrases = [
+  "Talk wordy to me!", "Stay true to your shelf.", "Do you comma here often?", "bookBook makes shhhh happen.", "ISBN thinking about you.", "What a breath of fresh Eyre!", "Check your shelf before you wreck your shelf."
+]
+
+// const images = [
+//   ""
+// ]
+
 // the below is heavily based on https://andrew.hedges.name/experiments/diceware/
 
 // from: https://www.rempe.us/diceware/
@@ -53,4 +61,8 @@ export function getBookAddedPhrase(index) {
 
 export function getBookRejectedPhrase() {
   return rejectionPhrases[getRandomInt(0, rejectionPhrases.length)]
+}
+
+export function getCarouselLoadingPhrase() {
+  return carouselLoadingPhrases[getRandomInt(0, carouselLoadingPhrases.length)]
 }

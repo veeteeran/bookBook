@@ -36,6 +36,7 @@ const Welcome = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [booksAdded, setBooksAdded] = useState(0)
   const [showCarousel, setShowCarousel] = useState(false)
+  const [bookData, setBookData] = useState([])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value)
@@ -46,6 +47,15 @@ const Welcome = () => {
     setUrl(userId === ''
       ? `/api/getISBN/?title=${title}&rating=${rating}`
       : `/api/getISBN/?title=${title}&rating=${rating}&userId=${userId}`)
+  }
+
+  const fetchBookData = async () => {
+    const bookData = await fetch(`/api/getBookData`)
+      .then(response => response.json())
+      .catch(err => console.log(err))
+
+    setBookData(bookData)
+    setShowCarousel(true)
   }
 
   useEffect(() => {
@@ -72,7 +82,6 @@ const Welcome = () => {
 
     return () => clearTimeout(timer)
   }, [url]);
-  // console.log('DATA AFTER FETCH:', data)
 
   const classes = useStyles()
   return (
@@ -105,19 +114,14 @@ const Welcome = () => {
               </Box>
               <div className={styles.buttonContainer}>
                 <Button type='submit'>Submit</Button>
-                {booksAdded >= 3
-                  // ? < BookCarousel />
-                  // : null
-                  ? <Button type='button' onClick={() => setShowCarousel(true)}>Get List</Button>
-                  : null
+                {booksAdded >= 3 && <Button type='button' onClick={fetchBookData}>Get List</Button>
                 }
               </div>
             </form>
             <BookIcons booksAdded={booksAdded} />
           </>
-          : < BookCarousel />
+          : < BookCarousel bookData={bookData} />
       }
-      {/* <LoadingPhrase data='foo' isLoading={true} /> */}
     </div>
   )
 }
