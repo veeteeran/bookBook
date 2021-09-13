@@ -32,22 +32,22 @@ const LoadingPhrase = ({ data, rating }) => {
           ?
           <>
             <div className={styles.curiousBook} />
-            <blockquote className={styles.loadingQuote}>
+            <blockquote className={styles.loadingPhrase}>
               <p>{loadingPhrase[0]}</p>
             </blockquote>
-            <figcaption className={styles.caption}> -{loadingPhrase[1]}</figcaption>
-            <CircularProgress />
+            <p className={styles.caption}> -{loadingPhrase[1]}</p>
           </>
           : data.isbn !== isbn
             ? <>
               <div className={styles.happyBook} />
-              <p>{getBookAddedPhrase(rating - 1)}</p>
+              <p className={styles.loadingPhrase}>{getBookAddedPhrase(rating - 1)}</p>
             </>
             : <>
               <div className={styles.sadBook} />
-              <p>{getBookRejectedPhrase()}</p>
+              <p className={styles.loadingPhrase}>{getBookRejectedPhrase()}</p>
             </>
       }
+      <CircularProgress size='3vw' />
     </div >
   )
 }
