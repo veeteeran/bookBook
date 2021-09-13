@@ -24,4 +24,29 @@
       padding: 1rem 0;
     }
 }
+.bookData {
+  width: 17vw;
+  display: grid;
+  justify-items: center;
+  row-gap: 1vw;
+  .bookCover {
+    width: 10vw;
+    height: 10vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .text {
+    display: grid;
+    justify-items: center;
+    font-size: 1.5vw;
+    color: #375E97;
+    .title {
+      text-align: center;
+    }
+    .author {
+
+    }
+  }
+}
 }

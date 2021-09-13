@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-const styles = require('./carousel.module.scss')
 import { useSpringCarousel } from 'react-spring-carousel-js'
 import { CircularProgress } from '@material-ui/core'
 import { getCarouselLoadingPhrase } from 'util/getPhrase'
-import bookEater from '../../../static/kelsie.jpeg'
+
+const styles = require('./carousel.module.scss')
 
 const BookCarousel = ({ bookData }) => {
   const [listExists, setListExists] = useState(false)
@@ -14,22 +14,17 @@ const BookCarousel = ({ bookData }) => {
       {
         id: `item-${parseInt(i) + 1}`,
         renderItem:
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              // filter: 'blur(4px)',
-            }} >
-            <div style={{
-              backgroundImage: `url(${book.ImageLarge})`,
-              width: '10vw',
-              height: '10vw',
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center center'
-            }} />
-            <p>{book.Title}</p>
-            <p>{book.Author}</p>
+          <div className={styles.bookData}>
+            <div
+              style={{
+                backgroundImage: `url(${book.ImageLarge})`
+              }}
+              className={styles.bookCover}
+            />
+            <div className={styles.text}>
+              <p className={styles.title}>{book.Title}</p>
+              <p className={styles.author}>{book.Author}</p>
+            </div>
           </div>
       }
     ))
