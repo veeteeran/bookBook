@@ -123,7 +123,7 @@ const Welcome = () => {
               <div className={styles.buttonContainer}>
                 <Button
                   type='submit'
-                  disabled={rating > 0 ? false : true}
+                  disabled={title !== '' && rating > 0 ? false : true}
                   className={classes.button}
                 >
                   Add Book
