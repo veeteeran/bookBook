@@ -26,6 +26,7 @@
 }
 .bookData {
   width: 17vw;
+  height: 25vw;
   display: grid;
   justify-items: center;
   row-gap: 1vw;
@@ -36,16 +37,41 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
-  .text {
-    display: grid;
-    justify-items: center;
+  .textContainer {
+    // display: grid;
+    display: flex;
+    flex-direction: column;
+    // justify-items: center;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5vw;
     color: #375E97;
     .title {
       text-align: center;
+      height: 7vw;
+      display: flex;
+      align-items: center;
     }
     .author {
 
+    }
+  }
+  .iconsContainer {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    .linkBG {
+      width: 3vw;
+      height: 3vw;
+      border-radius: 50%;
+      background-color: #7CAA2D;
+      position: relative;
+      .links {
+        color: #FFBB00;
+        position: relative;
+        left: 0.3vw;
+        top: 0.3vw;
+      }
     }
   }
 }

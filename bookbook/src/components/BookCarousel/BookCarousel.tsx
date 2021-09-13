@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSpringCarousel } from 'react-spring-carousel-js'
-import { CircularProgress } from '@material-ui/core'
+import { CircularProgress, Link } from '@material-ui/core'
+import {
+  LocalLibrary as LocalLibraryIcon,
+  Storefront as StorefrontIcon,
+} from '@material-ui/icons'
 import { getCarouselLoadingPhrase } from 'util/getPhrase'
 
 const styles = require('./carousel.module.scss')
@@ -21,9 +25,21 @@ const BookCarousel = ({ bookData }) => {
               }}
               className={styles.bookCover}
             />
-            <div className={styles.text}>
+            <div className={styles.textContainer}>
               <p className={styles.title}>{book.Title}</p>
               <p className={styles.author}>{book.Author}</p>
+            </div>
+            <div className={styles.iconsContainer}>
+              <div className={styles.linkBG}>
+                <a className={styles.links} href="https://www.tulsalibrary.org/">
+                  <LocalLibraryIcon />
+                </a>
+              </div>
+              <div className={styles.linkBG}>
+                <a className={styles.links} href="https://magiccitybooks.com/">
+                  <StorefrontIcon />
+                </a>
+              </div>
             </div>
           </div>
       }
