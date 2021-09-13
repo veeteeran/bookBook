@@ -31,12 +31,20 @@ const BookCarousel = ({ bookData }) => {
             </div>
             <div className={styles.iconsContainer}>
               <div className={styles.linkBG}>
-                <a className={styles.links} href="https://www.tulsalibrary.org/">
+                <a
+                  className={styles.links}
+                  href="https://www.tulsalibrary.org/"
+                  target="_blank" rel="noopener noreferrer"
+                >
                   <LocalLibraryIcon />
                 </a>
               </div>
               <div className={styles.linkBG}>
-                <a className={styles.links} href="https://magiccitybooks.com/">
+                <a
+                  className={styles.links}
+                  href="https://magiccitybooks.com/"
+                  target="_blank" rel="noopener noreferrer"
+                >
                   <StorefrontIcon />
                 </a>
               </div>
