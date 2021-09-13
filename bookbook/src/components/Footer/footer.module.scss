@@ -38,8 +38,9 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: space-evenly;
+      height: 100%;
       .title {
-        padding-bottom: 0.5vw;
         font-family: Thasadith;
         color: #375E97;
         font-weight: 700;
@@ -48,6 +49,15 @@
         width: 63%;
         display: flex;
         justify-content: space-evenly;
+        .imageButton {
+          min-width: 3vw;
+          width: 3vw;
+          height: 3vw;
+          border-radius: 50%;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
         .staci {
           background-image: url('../../../static/staci.png');
         }
@@ -61,6 +71,29 @@
     }
     .social, .bookaroos {
       padding-left: 5vw;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    height: 33.3vw;
+    .container {
+      .social {
+        .socialIcons {
+          width: 50%;
+        }
+      }
+      .bookaroos {
+        .images {
+          width: 85%;
+          .imageButton {
+            min-width: 6.5vw;
+            width: 6.5vw;
+            height: 6.5vw;
+          }
+        }
+      }
     }
   }
 }
