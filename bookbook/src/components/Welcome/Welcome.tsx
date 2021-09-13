@@ -23,8 +23,12 @@ const useStyles = makeStyles({
   root: {
     marginBottom: 0,
     height: '25%'
+  },
+  button: {
+    textTransform: "none"
   }
 })
+
 
 const Welcome = () => {
   const [title, setTitle] = useState('')
@@ -110,11 +114,28 @@ const Welcome = () => {
                     setHover(newHover);
                   }}
                 />
-                {rating !== null && <Box ml={2}>{labels[hover !== -1 ? hover : rating]}</Box>}
+                {rating !== null &&
+                  <Box ml={2} style={{ textAlign: 'center' }}>
+                    {labels[hover !== -1 ? hover : rating]}
+                  </Box>
+                }
               </Box>
               <div className={styles.buttonContainer}>
-                <Button type='submit'>Submit</Button>
-                {booksAdded >= 3 && <Button type='button' onClick={fetchBookData}>Get List</Button>
+                <Button
+                  type='submit'
+                  disabled={rating > 0 ? false : true}
+                  className={classes.button}
+                >
+                  Add Book
+                </Button>
+                {booksAdded >= 3 &&
+                  <Button
+                    type='button'
+                    className={classes.button}
+                    onClick={fetchBookData}
+                  >
+                    Get List
+                  </Button>
                 }
               </div>
             </form>
