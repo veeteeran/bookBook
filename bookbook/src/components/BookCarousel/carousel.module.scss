@@ -64,18 +64,16 @@
       width: 75%;
       display: flex;
       justify-content: space-around;
-      .linkBG {
-        width: 3vw;
-        height: 3vw;
+      .links {
+        width: 1vw;
+        height: 1vw;
         border-radius: 50%;
         background-color: #7CAA2D;
-        position: relative;
-        .links {
-          color: #FFBB00;
-          position: relative;
-          left: 0.3vw;
-          top: 0.3vw;
-        }
+        color: #FFBB00;
+      }
+      :hover {
+        background-color: #CB6318;
+        color: #375E97;
       }
     }
   }

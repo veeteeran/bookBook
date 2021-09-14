@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSpringCarousel } from 'react-spring-carousel-js'
-import { CircularProgress } from '@material-ui/core'
+import { CircularProgress, IconButton } from '@material-ui/core'
 import {
   LocalLibrary as LocalLibraryIcon,
   Storefront as StorefrontIcon,
@@ -30,24 +30,22 @@ const BookCarousel = ({ bookData }) => {
               <p className={styles.author}>{book.Author}</p>
             </div>
             <div className={styles.iconsContainer}>
-              <div className={styles.linkBG}>
-                <a
-                  className={styles.links}
-                  href="https://www.tulsalibrary.org/"
-                  target="_blank" rel="noopener noreferrer"
-                >
-                  <LocalLibraryIcon />
-                </a>
-              </div>
-              <div className={styles.linkBG}>
-                <a
-                  className={styles.links}
-                  href="https://magiccitybooks.com/"
-                  target="_blank" rel="noopener noreferrer"
-                >
-                  <StorefrontIcon />
-                </a>
-              </div>
+              <IconButton
+                className={styles.links}
+                href="https://www.tulsalibrary.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LocalLibraryIcon />
+              </IconButton>
+              <IconButton
+                className={styles.links}
+                href="https://magiccitybooks.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <StorefrontIcon />
+              </IconButton>
             </div>
           </div>
       }
