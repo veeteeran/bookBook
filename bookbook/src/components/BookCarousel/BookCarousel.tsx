@@ -71,7 +71,6 @@ const BookCarousel = ({ bookData }) => {
   const { carouselFragment, getIsActiveItem, getCurrentActiveItem, useListenToCustomEvent } = useSpringCarousel({
     withThumbs: false,
     withLoop: true,
-    // itemsPerSlide: listExists ? 5 : 1,
     itemsPerSlide: !listExists || isMobile ? 1 : 5,
     initialStartingPosition: 'center',
     items: listExists ? booksArray : [{ id: "item-1", renderItem: <p>List does not exist</p> }]
@@ -100,14 +99,6 @@ const BookCarousel = ({ bookData }) => {
           </div>
           : <div className={styles.container}>
             <div
-              // style={{
-              //   backgroundImage: `url(${bookEater})`,
-              //   width: '10vw',
-              //   height: '10vw',
-              //   backgroundSize: 'contain',
-              //   backgroundRepeat: 'no-repeat',
-              //   backgroundPosition: 'center center'
-              // }}
               className={styles.image}
             />
             <p className={styles.phrase}>{getCarouselLoadingPhrase()}</p>
