@@ -26,3 +26,30 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .section {
+    height: 33.3vw;
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .icon {
+        width: 5vw;
+        height: 5vw;
+        background-color: gray;
+      }
+      .title {
+        font-family: 'Thasadith', sans-serif;
+        font-size: 7.5vw;
+        color: #FFBB00;
+      }
+      .getList {
+        width: 5vw;
+        height: 5vw;
+        background-color: gray;
+      }
+    }
+  }
+}

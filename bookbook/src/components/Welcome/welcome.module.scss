@@ -26,7 +26,6 @@
       height: 2.5rem;
       border-radius: 1vw;
       box-shadow: 0.2vw 0.3vw 0 rgba(184, 184, 184, 0.3) inset,-0.2vw 0 0 rgba(184, 184, 184, 0.3) inset;
-      // box-shadow: 0 0 0.3vw rgba(184, 184, 184, 0.5) inset,-0.2vw 0 0 rgba(184, 184, 184, 0.5) inset;
       border: none;
     }
     input[type="text"] {
@@ -64,5 +63,36 @@
   }
   button:hover {
     background-color: #7CAA2D;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    .title {
+      font-size: 8.4vw;
+    }
+    form {
+      input {
+        width: 67.4%;
+        height: 2.8rem;
+      }
+      input[type="text"] {
+        font-size: 5vw;
+      }
+      .buttonContainer {
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 5vw;
+      }
+    }
+    button {
+      width: 130px;
+      height: 35px;
+      border-radius: 5vw;
+      font-size: 4.3vw;
+    }
+    button:hover {
+      background-color: #7CAA2D;
+    }
   }
 }

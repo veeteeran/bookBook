@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/core/styles'
 import {
   Instagram as InstagramIcon,
   LinkedIn as LinkedInIcon,
@@ -8,20 +7,7 @@ import {
 } from '@material-ui/icons'
 const styles = require('./footer.module.scss')
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: '3vw',
-    width: '3vw',
-    height: '3vw',
-    borderRadius: '50%',
-    backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center center'
-  }
-})
-
 const Footer = () => {
-  const classes = useStyles()
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -55,17 +41,17 @@ const Footer = () => {
           <p className={styles.title}>Bookaroos</p>
           <div className={styles.images}>
             <Button
-              className={`${styles.staci} ${classes.root}`}
+              className={`${styles.staci} ${styles.imageButton}`}
               href="https://www.linkedin.com/in/staci-af/"
               target="_blank" rel="noopener noreferrer"
             />
             <Button
-              className={`${styles.kelsie} ${classes.root}`}
+              className={`${styles.kelsie} ${styles.imageButton}`}
               href="https://www.linkedin.com/in/kelsie-merchant-physics/"
               target="_blank" rel="noopener noreferrer"
             />
             <Button
-              className={`${styles.viet} ${classes.root}`}
+              className={`${styles.viet} ${styles.imageButton}`}
               href="https://www.linkedin.com/in/viet-t/"
               target="_blank" rel="noopener noreferrer"
             />

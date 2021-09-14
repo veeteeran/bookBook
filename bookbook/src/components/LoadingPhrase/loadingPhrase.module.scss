@@ -47,4 +47,46 @@
   .sadBook ~ .loadingPhrase {
     width: 100%;
   }
+  .spinner {
+    width: 3vw;
+    height: 3vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    height: 65%;
+    display: grid;
+    justify-items: center;
+    flex-direction: unset;
+    justify-content: unset;
+    align-items: unset;
+    .loadingPhrase {
+      text-align: center;
+      font-size: 4.5vw;
+    }
+    .caption {
+      font-size: 3.5vw;
+    }
+    .curiousBook {
+      width: 35vw;
+      height: 35vw;
+    }
+    .happyBook {
+      width: 35vw;
+      height: 35vw;
+    }
+    .sadBook {
+      width: 35vw;
+      height: 35vw;
+    }
+    .happyBook ~ .loadingPhrase,
+    .sadBook ~ .loadingPhrase {
+      width: 65%;
+    }
+    .spinner {
+      width: 8vw;
+      height: 8vw;
+    }
+  }
 }

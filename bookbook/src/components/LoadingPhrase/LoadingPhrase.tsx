@@ -47,7 +47,7 @@ const LoadingPhrase = ({ data, rating }) => {
               <p className={styles.loadingPhrase}>{getBookRejectedPhrase()}</p>
             </>
       }
-      <CircularProgress size='3vw' />
+      <CircularProgress className={styles.spinner} />
     </div >
   )
 }

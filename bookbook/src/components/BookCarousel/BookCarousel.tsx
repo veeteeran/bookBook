@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSpringCarousel } from 'react-spring-carousel-js'
-import { CircularProgress } from '@material-ui/core'
+import { CircularProgress, IconButton, useMediaQuery } from '@material-ui/core'
 import {
   LocalLibrary as LocalLibraryIcon,
   Storefront as StorefrontIcon,
@@ -30,24 +30,22 @@ const BookCarousel = ({ bookData }) => {
               <p className={styles.author}>{book.Author}</p>
             </div>
             <div className={styles.iconsContainer}>
-              <div className={styles.linkBG}>
-                <a
-                  className={styles.links}
-                  href="https://www.tulsalibrary.org/"
-                  target="_blank" rel="noopener noreferrer"
-                >
-                  <LocalLibraryIcon />
-                </a>
-              </div>
-              <div className={styles.linkBG}>
-                <a
-                  className={styles.links}
-                  href="https://magiccitybooks.com/"
-                  target="_blank" rel="noopener noreferrer"
-                >
-                  <StorefrontIcon />
-                </a>
-              </div>
+              <IconButton
+                className={styles.links}
+                href="https://www.tulsalibrary.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LocalLibraryIcon />
+              </IconButton>
+              <IconButton
+                className={styles.links}
+                href="https://magiccitybooks.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <StorefrontIcon />
+              </IconButton>
             </div>
           </div>
       }
@@ -68,10 +66,12 @@ const BookCarousel = ({ bookData }) => {
     return () => clearTimeout(timer)
   }, [])
 
+  const isMobile = useMediaQuery('(max-width:768px)')
+
   const { carouselFragment, getIsActiveItem, getCurrentActiveItem, useListenToCustomEvent } = useSpringCarousel({
     withThumbs: false,
     withLoop: true,
-    itemsPerSlide: listExists ? 5 : 1,
+    itemsPerSlide: !listExists || isMobile ? 1 : 5,
     initialStartingPosition: 'center',
     items: listExists ? booksArray : [{ id: "item-1", renderItem: <p>List does not exist</p> }]
   });
@@ -86,6 +86,7 @@ const BookCarousel = ({ bookData }) => {
       console.log(data.currentItem === activeItem.index)
     }
   })
+
   return (
     <div className={styles.section}>
       {
@@ -98,18 +99,10 @@ const BookCarousel = ({ bookData }) => {
           </div>
           : <div className={styles.container}>
             <div
-              // style={{
-              //   backgroundImage: `url(${bookEater})`,
-              //   width: '10vw',
-              //   height: '10vw',
-              //   backgroundSize: 'contain',
-              //   backgroundRepeat: 'no-repeat',
-              //   backgroundPosition: 'center center'
-              // }}
               className={styles.image}
             />
             <p className={styles.phrase}>{getCarouselLoadingPhrase()}</p>
-            <CircularProgress size='3vw' />
+            <CircularProgress className={styles.spinner} />
           </div>
       }
       {console.log('Active item === 1: ', getIsActiveItem('1'))}
