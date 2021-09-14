@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSpringCarousel } from 'react-spring-carousel-js'
-import { CircularProgress, IconButton } from '@material-ui/core'
+import { CircularProgress, IconButton, useMediaQuery } from '@material-ui/core'
 import {
   LocalLibrary as LocalLibraryIcon,
   Storefront as StorefrontIcon,
@@ -66,10 +66,13 @@ const BookCarousel = ({ bookData }) => {
     return () => clearTimeout(timer)
   }, [])
 
+  const isMobile = useMediaQuery('(max-width:768px)')
+
   const { carouselFragment, getIsActiveItem, getCurrentActiveItem, useListenToCustomEvent } = useSpringCarousel({
     withThumbs: false,
     withLoop: true,
-    itemsPerSlide: listExists ? 5 : 1,
+    // itemsPerSlide: listExists ? 5 : 1,
+    itemsPerSlide: !listExists || isMobile ? 1 : 5,
     initialStartingPosition: 'center',
     items: listExists ? booksArray : [{ id: "item-1", renderItem: <p>List does not exist</p> }]
   });
@@ -84,6 +87,7 @@ const BookCarousel = ({ bookData }) => {
       console.log(data.currentItem === activeItem.index)
     }
   })
+
   return (
     <div className={styles.section}>
       {
