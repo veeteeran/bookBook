@@ -47,4 +47,67 @@
   .sadBook ~ .loadingPhrase {
     width: 100%;
   }
+  .spinner {
+    width: 3vw;
+    height: 3vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    height: 65%;
+    display: grid;
+    justify-items: center;
+    flex-direction: unset;
+    justify-content: unset;
+    align-items: unset;
+  
+    .loadingPhrase {
+      // width: 65%;
+    //   font-family: Thasadith;
+      text-align: center;
+      font-size: 4.5vw;
+    //   color: #375E97;
+    }
+  
+    .caption {
+    //   font-family: Thasadith;
+      font-size: 3.5vw;
+    //   color: #375E97;
+    //   font-style: italic;
+    }
+  
+    .curiousBook {
+    //   background-image: url('../../../static/curious_book.png');
+      width: 35vw;
+      height: 35vw;
+    //   background-size: contain;
+    //   background-repeat: no-repeat;
+    //   background-position: center center;
+    }
+    .happyBook {
+    //   background-image: url('../../../static/happyBook-removebg.png');
+    width: 35vw;
+      height: 35vw;
+    //   background-size: contain;
+    //   background-repeat: no-repeat;
+    //   background-position: center center;
+    }
+    .sadBook {
+    //   background-image: url('../../../static/sadBook-removebg.png');
+    width: 35vw;
+      height: 35vw;
+    //   background-size: contain;
+    //   background-repeat: no-repeat;
+    //   background-position: center center;
+    }
+    .happyBook ~ .loadingPhrase,
+    .sadBook ~ .loadingPhrase {
+      width: 65%;
+    }
+    .spinner {
+      width: 8vw;
+      height: 8vw;
+    }
+  }
 }

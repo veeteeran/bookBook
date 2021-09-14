@@ -109,7 +109,7 @@ const BookCarousel = ({ bookData }) => {
               className={styles.image}
             />
             <p className={styles.phrase}>{getCarouselLoadingPhrase()}</p>
-            <CircularProgress size='3vw' />
+            <CircularProgress className={styles.spinner} />
           </div>
       }
       {console.log('Active item === 1: ', getIsActiveItem('1'))}
