@@ -26,6 +26,10 @@ const useStyles = makeStyles({
   },
   button: {
     textTransform: "none"
+  },
+  disabled: {
+    textTransform: "none",
+    opacity: 0.7
   }
 })
 
@@ -36,7 +40,9 @@ const Welcome = () => {
   const [userId, setUserId] = useState('')
   const [rating, setRating] = useState(0)
   const [hover, setHover] = useState(-1)
-  const [url, setUrl] = useState(`/api/getISBN/?title=${title}&rating=${rating}`)
+  // This is commented out for demo purposes
+  // const [url, setUrl] = useState(`/api/getISBN/?title=${title}&rating=${rating}`)
+  const [url, setUrl] = useState(`/api/demoData/?title=${title}&rating=${rating}`)
   const [isLoading, setIsLoading] = useState(false)
   const [booksAdded, setBooksAdded] = useState(0)
   const [showCarousel, setShowCarousel] = useState(false)
@@ -49,12 +55,16 @@ const Welcome = () => {
   const handleSetUrl = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setUrl(userId === ''
-      ? `/api/getISBN/?title=${title}&rating=${rating}`
-      : `/api/getISBN/?title=${title}&rating=${rating}&userId=${userId}`)
+      // commented out for demo
+      // ? `/api/getISBN/?title=${title}&rating=${rating}`
+      // : `/api/getISBN/?title=${title}&rating=${rating}&userId=${userId}`)
+      ? `/api/demoISBN/?title=${title}&rating=${rating}`
+      : `/api/demoISBN/?title=${title}&rating=${rating}&userId=${userId}`)
   }
 
   const fetchBookData = async () => {
-    const bookData = await fetch(`/api/getBookData`)
+    // const bookData = await fetch(`/api/getBookData`)
+    const bookData = await fetch(`/api/demoBookData`)
       .then(response => response.json())
       .catch(err => console.log(err))
 
@@ -124,7 +134,7 @@ const Welcome = () => {
                 <Button
                   type='submit'
                   disabled={title !== '' && rating > 0 ? false : true}
-                  className={classes.button}
+                  className={title !== '' && rating > 0 ? classes.button : classes.disabled}
                 >
                   Add Book
                 </Button>
