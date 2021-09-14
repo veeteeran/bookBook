@@ -26,6 +26,10 @@ const useStyles = makeStyles({
   },
   button: {
     textTransform: "none"
+  },
+  disabled: {
+    textTransform: "none",
+    opacity: 0.7
   }
 })
 
@@ -130,7 +134,7 @@ const Welcome = () => {
                 <Button
                   type='submit'
                   disabled={title !== '' && rating > 0 ? false : true}
-                  className={classes.button}
+                  className={title !== '' && rating > 0 ? classes.button : classes.disabled}
                 >
                   Add Book
                 </Button>
