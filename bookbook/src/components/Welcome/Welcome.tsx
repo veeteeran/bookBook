@@ -54,12 +54,13 @@ const Welcome = () => {
       // commented out for demo
       // ? `/api/getISBN/?title=${title}&rating=${rating}`
       // : `/api/getISBN/?title=${title}&rating=${rating}&userId=${userId}`)
-      ? `/api/demoData/?title=${title}&rating=${rating}`
-      : `/api/demoData/?title=${title}&rating=${rating}&userId=${userId}`)
+      ? `/api/demoISBN/?title=${title}&rating=${rating}`
+      : `/api/demoISBN/?title=${title}&rating=${rating}&userId=${userId}`)
   }
 
   const fetchBookData = async () => {
-    const bookData = await fetch(`/api/getBookData`)
+    // const bookData = await fetch(`/api/getBookData`)
+    const bookData = await fetch(`/api/demoBookData`)
       .then(response => response.json())
       .catch(err => console.log(err))
 
