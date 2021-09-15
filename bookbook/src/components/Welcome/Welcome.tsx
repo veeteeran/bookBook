@@ -104,7 +104,7 @@ const Welcome = () => {
         ? <LoadingPhrase data={data} rating={Math.round(rating / 2)} />
         : !showCarousel
           ? <>
-            <h1 className={styles.title}>Feed me your favorites</h1>
+            {/* <h1 className={styles.title}>Feed me your favorites</h1> */}
             <form onSubmit={handleSetUrl}>
               <input
                 onChange={handleChange}
