@@ -1,8 +1,0 @@
-.section {
-  display: -ms-grid;
-  display: grid;
-  grid-auto-flow: column;
-  -webkit-column-gap: 1vw;
-          column-gap: 1vw;
-}
-/*# sourceMappingURL=bookIcons.module.css.map */
