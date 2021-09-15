@@ -46,6 +46,11 @@
       color: #313639;
       font-weight: lighter;
     }
+    .starContainer {
+      margin-bottom: 1vw;
+      height: 25%;
+      font-size: 1.5vw;
+    }
     .buttonContainer {
       display: grid;
       grid-auto-flow: column;
@@ -79,6 +84,10 @@
       }
       input[type="text"] {
         font-size: 5vw;
+      }
+      .box {
+        margin-bottom: 3vw;
+        font-size: 4.5vw;
       }
       .buttonContainer {
         display: grid;
