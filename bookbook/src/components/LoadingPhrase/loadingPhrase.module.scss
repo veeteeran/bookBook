@@ -27,6 +27,7 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+
   .happyBook {
     background-image: url('../../../static/happyBook-removebg.png');
     width: 10vw;
@@ -35,6 +36,7 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+
   .sadBook {
     background-image: url('../../../static/sadBook-removebg.png');
     width: 10vw;
@@ -43,10 +45,12 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
-  .happyBook ~ .loadingPhrase,
-  .sadBook ~ .loadingPhrase {
+
+  .happyBook~.loadingPhrase,
+  .sadBook~.loadingPhrase {
     width: 100%;
   }
+
   .spinner {
     width: 3vw;
     height: 3vw;
@@ -62,31 +66,38 @@
     flex-direction: unset;
     justify-content: unset;
     align-items: unset;
+
     .loadingPhrase {
       text-align: center;
       font-size: 4.5vw;
       font-weight: 600;
     }
+
     .caption {
       font-size: 3.5vw;
       font-weight: 600;
     }
+
     .curiousBook {
-      width: 35vw;
-      height: 35vw;
+      width: 32vw;
+      height: 32vw;
     }
+
     .happyBook {
       width: 35vw;
       height: 35vw;
     }
+
     .sadBook {
       width: 35vw;
       height: 35vw;
     }
-    .happyBook ~ .loadingPhrase,
-    .sadBook ~ .loadingPhrase {
+
+    .happyBook~.loadingPhrase,
+    .sadBook~.loadingPhrase {
       width: 65%;
     }
+
     .spinner {
       width: 6vw;
       height: 6vw;
