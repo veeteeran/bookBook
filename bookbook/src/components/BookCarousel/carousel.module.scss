@@ -50,7 +50,7 @@
       color: #375E97;
       .title {
         text-align: center;
-        height: 7vw;
+        height: 4vw;
         display: flex;
         align-items: center;
       }
@@ -112,10 +112,12 @@
         height: 45vw;
       }
       .textContainer {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        flex-direction: unset;
+        justify-content: unset;
+        align-items: unset;
+        display: grid;
+        row-gap: 2vw;
+        justify-items: center;
         font-size: 4.5vw;
       }
       .iconsContainer {

@@ -1,3 +1,4 @@
+
 import { Box, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Rating from '@material-ui/lab/Rating'
@@ -20,10 +21,6 @@ const labels = {
   5: 'Own a copy',
 }
 const useStyles = makeStyles({
-  root: {
-    marginBottom: 0,
-    height: '25%'
-  },
   button: {
     textTransform: "none"
   },
@@ -32,7 +29,6 @@ const useStyles = makeStyles({
     opacity: 0.7
   }
 })
-
 
 const Welcome = () => {
   const [title, setTitle] = useState('')
@@ -112,8 +108,9 @@ const Welcome = () => {
                 type='text'
                 value={title}
               />
-              <Box className={classes.root} component="fieldset" mb={3} borderColor="transparent">
+              <Box className={styles.starContainer} component="fieldset" mb={3} borderColor="transparent">
                 <Rating
+                  size="large"
                   name="simple-controlled"
                   value={rating / 2}
                   onChange={(event, newRating) => {
