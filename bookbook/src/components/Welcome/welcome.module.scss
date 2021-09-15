@@ -53,11 +53,13 @@
       color: #a1a0a0;
       font-weight: lighter;
     }
+
     .starContainer {
       margin-bottom: 1vw;
       height: 25%;
       font-size: 1.5vw;
     }
+
     .buttonContainer {
       display: grid;
       grid-auto-flow: column;
@@ -101,6 +103,7 @@
         margin-bottom: 3vw;
         font-size: 4.5vw;
       }
+
       .buttonContainer {
         display: grid;
         grid-auto-flow: column;

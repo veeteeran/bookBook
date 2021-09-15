@@ -1,55 +1,140 @@
 .section {
   width: 100%;
-  height: 16.4%;
+  height: 15vw;
   background-color: #7CAA2D;
   display: flex;
   align-items: center;
+
   .container {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    .icon {
-      width: 5vw;
-      height: 5vw;
-      background-color: gray;
+    margin-left: 1vw;
+
+    // .icon {
+    //   width: 5vw;
+    //   height: 5vw;
+    //   background-color: gray;
+    // }
+
+    .logo {
+      background-image: url('../../../static/bBLogo.png');
+      width: 30vw;
+      height: 28vw;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
-    .title {
-      font-family: 'Thasadith', sans-serif;
-      font-size: 7.5vw;
-      color: #FFBB00;
+
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
     }
-    .getList {
-      width: 5vw;
-      height: 5vw;
-      background-color: gray;
+
+    100% {
+      opacity: 1;
     }
   }
-}
 
-@media (max-width: 768px) {
-  .section {
-    height: 25vw;
-    .container {
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      .icon {
-        width: 5vw;
-        height: 5vw;
-        background-color: gray;
-      }
-      .title {
-        font-family: 'Thasadith', sans-serif;
-        font-size: 7.5vw;
-        color: #FFBB00;
-      }
-      .getList {
-        width: 5vw;
-        height: 5vw;
-        background-color: gray;
-      }
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-o-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .bB {
+    background-image: url('../../../static/happyBook-removebg.png');
+    width: 13vw;
+    height: 13vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation-name: wave-animation;
+    /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s;
+    /* Change to speed up or slow down */
+    animation-iteration-count: infinite;
+    /* Never stop waving :) */
+    transform-origin: 70% 70%;
+    /* Pivot around the bottom-left palm */
+    display: inline-block;
+  }
+
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0.0deg)
+    }
+
+    10% {
+      transform: rotate(14.0deg)
+    }
+
+    /* The following five values can be played with to make the waving more or less extreme */
+    20% {
+      transform: rotate(-8.0deg)
+    }
+
+    30% {
+      transform: rotate(14.0deg)
+    }
+
+    40% {
+      transform: rotate(-4.0deg)
+    }
+
+    50% {
+      transform: rotate(10.0deg)
+    }
+
+    60% {
+      transform: rotate(0.0deg)
+    }
+
+    /* Reset for the last half to pause */
+    100% {
+      transform: rotate(0.0deg)
     }
   }
 }
