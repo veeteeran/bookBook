@@ -26,8 +26,8 @@
     justify-content: space-evenly;
 
     input {
-      width: 63.5%;
-      height: 2.5rem;
+      width: 85%;
+      height: 4rem;
       border-radius: 1vw;
       box-shadow: 0.2vw 0.3vw 0 rgba(184, 184, 184, 0.3) inset, -0.2vw 0 0 rgba(184, 184, 184, 0.3) inset;
       border: none;
@@ -40,17 +40,17 @@
     }
 
     ::placeholder {
-      color: #848897;
+      color: #a1a0a0;
       font-weight: lighter;
     }
 
     :-ms-input-placeholder {
-      color: #313639;
+      color: #a1a0a0;
       font-weight: lighter;
     }
 
     ::-ms-input-placeholder {
-      color: #313639;
+      color: #a1a0a0;
       font-weight: lighter;
     }
 
@@ -68,6 +68,7 @@
     color: #313639;
     font-family: Thasadith;
     font-size: 2vw;
+    font-weight: 700;
     border: none;
     cursor: pointer;
   }
