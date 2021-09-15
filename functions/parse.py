@@ -34,8 +34,8 @@ def get_recommendations(user_predictions, predicted_indices, N=10):
             # if rating is less than 10, prepend a 0 for sorting
             rating = "0" + rating
         # dictionary stores both ISBN and Rating associated with index
-        dictionary = {"ISBN":user_predictions[0][index],
-                      "Rating":rating}
+        dictionary = {"ISBN": user_predictions[0][index],
+                      "Rating": rating}
         # append dictionary to predicted_ratings list
         predicted_ratings.append(dictionary)
     # sorts predicted_ratings by Rating value
@@ -47,6 +47,8 @@ def get_recommendations(user_predictions, predicted_indices, N=10):
     if len(predicted_ratings) > N:
         sorted_predicted_ratings = sorted_predicted_ratings[:N]
     # prints sorted predicted ratings for easy viewing
+    for prediction in sorted_predicted_ratings:
+        print(prediction)
     # print(sorted_predicted_ratings)
     # sorted_ISBNs will be sorted list of only book ISBNs
     sorted_ISBNs = []
