@@ -45,8 +45,9 @@ def similar_ratings(data_num, user_num, N=1):
         # if the similarity is in the top N similarities, save index value
         if similarity in most_similar:
             indices.append(index)
-    for index in indices:
-        print(data_num[index][0])
+    # prints IDs of most similar users for easy reference
+    # for index in indices:
+    # print(data_num[index][0])
     # return both indices of where to find most similar users and
     #    all cosine similiarity values
     return indices, cos_sim
