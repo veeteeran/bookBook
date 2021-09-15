@@ -1,0 +1,132 @@
+.section {
+  width: 100%;
+  display: flex;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23rem;
+    height: 18rem;
+    .image {
+      background-image: url("../../../static/bookeater.png");
+      width: 15vw;
+      height: 15vw;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      align-self: flex-start;
+      padding-left: 3vw;
+    }
+    .phrase {
+      font-family: Thasadith;
+      font-size: 2vw;
+      color: #375E97;
+      padding: 1rem 0;
+    }
+    .spinner {
+      width: 3vw;
+      height: 3vw;
+    }
+}
+  .bookData {
+    width: 17vw;
+    height: 25vw;
+    display: grid;
+    justify-items: center;
+    row-gap: 1vw;
+    .bookCover {
+      width: 10vw;
+      height: 10vw;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .textContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5vw;
+      color: #375E97;
+      .title {
+        text-align: center;
+        height: 7vw;
+        display: flex;
+        align-items: center;
+      }
+      .author {
+
+      }
+    }
+    .iconsContainer {
+      width: 75%;
+      display: flex;
+      justify-content: space-around;
+      .links {
+        width: 1vw;
+        height: 1vw;
+        border-radius: 50%;
+        background-color: #7CAA2D;
+        color: #FFBB00;
+      }
+      :hover {
+        background-color: #CB6318;
+        color: #375E97;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    .container {
+      display: grid;
+      justify-items: center;
+      flex-direction: unset;
+      align-items: unset;
+      .image {
+        width: 40vw;
+        height: 40vw;
+        padding-left: unset;
+      }
+      .phrase {
+        font-family: Thasadith;
+        text-align: center;
+        font-size: 4.5vw;
+        font-weight: 600;
+        padding: unset;
+      }
+      .spinner {
+        width: 8vw;
+        height: 8vw;
+      }
+  }
+    .bookData {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      justify-items: center;
+      row-gap: 5vw;
+      .bookCover {
+        width: 45vw;
+        height: 45vw;
+      }
+      .textContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 4.5vw;
+      }
+      .iconsContainer {
+        width: 75%;
+        display: flex;
+        justify-content: space-evenly;
+        .links {
+          width: 2vw;
+          height: 2vw;
+        }
+      }
+    }
+  }
+}
