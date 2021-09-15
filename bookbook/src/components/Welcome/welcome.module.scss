@@ -101,26 +101,28 @@
       }
 
       .box {
-        margin-bottom: 3vw;
-        font-size: 4.5vw;
+        .starContainer {
+
+          margin-bottom: 3vw;
+          font-size: 4.5vw;
+        }
+
+        .buttonContainer {
+          display: grid;
+          grid-auto-flow: column;
+          column-gap: 5vw;
+        }
       }
 
-      .buttonContainer {
-        display: grid;
-        grid-auto-flow: column;
-        column-gap: 5vw;
+      button {
+        width: 130px;
+        height: 35px;
+        border-radius: 5vw;
+        font-size: 4.3vw;
       }
-    }
 
-    button {
-      width: 130px;
-      height: 35px;
-      border-radius: 5vw;
-      font-size: 4.3vw;
-    }
-
-    button:hover {
-      background-color: #7CAA2D;
+      button:hover {
+        background-color: #7CAA2D;
+      }
     }
   }
-}
