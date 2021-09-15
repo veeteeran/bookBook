@@ -49,7 +49,7 @@ def predict_ratings(user, data_num, user_num, indices, cos_sim):
                 other_user_rating = data_num[sim_index][book_index]
                 # if other user's rating is 0, this is a placeholder,
                 #    not an actual rating, so it is skipped
-                if other_user_rating is 0:
+                if other_user_rating == 0:
                     continue
                 # similarity factor comes from cosine similarity,
                 #    at most similar user's index
@@ -58,8 +58,13 @@ def predict_ratings(user, data_num, user_num, indices, cos_sim):
                 sum_numerator += (other_user_rating * similarity_factor)
                 # add similarity factor to denominator
                 sum_denominator += similarity_factor
-            # calculates the weighted average to generate predicted rating
-            weighted_avg = sum_numerator / sum_denominator
+            try:
+                # calculates the weighted average to generate predicted rating
+                weighted_avg = sum_numerator / sum_denominator
+            except ZeroDivisionError:
+                # if sum_denominator is still 0, there were no ratings
+                # keeps placeholder of 0
+                weighted_avg = 0
             # print weighted average for easy viewing
             # print("weighted_avg: ", weighted_avg)
             # update specific user's rating of book at book_index with
