@@ -5,8 +5,8 @@ const Header = () => {
   return (
     <div className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.logo}>bookBook</div>
-        <div className={styles.getList} />
+        <div className={styles.logo}></div>
+        <div className={styles.bB} />
       </div>
     </div>
   )

@@ -8,7 +8,7 @@
   .container {
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     margin-left: 1vw;
 
@@ -84,21 +84,57 @@
     }
   }
 
-  // .title {
-  //   background-image: url("../../../static/bB-header-logo.png");
-  //   width: 30vw;
-  //   height: 28vw;
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   background-position: center center;
-  //   // font-family: 'Thasadith', sans-serif;
-  //   // font-size: 7.5vw;
-  //   // color: #FFBB00;
-  // }
+  .bB {
+    background-image: url('../../../static/happyBook-removebg.png');
+    width: 13vw;
+    height: 13vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation-name: wave-animation;
+    /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s;
+    /* Change to speed up or slow down */
+    animation-iteration-count: infinite;
+    /* Never stop waving :) */
+    transform-origin: 70% 70%;
+    /* Pivot around the bottom-left palm */
+    display: inline-block;
+  }
 
-  // .getList {
-  //   width: 5vw;
-  //   height: 5vw;
-  //   background-color: gray;
-  // }
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0.0deg)
+    }
+
+    10% {
+      transform: rotate(14.0deg)
+    }
+
+    /* The following five values can be played with to make the waving more or less extreme */
+    20% {
+      transform: rotate(-8.0deg)
+    }
+
+    30% {
+      transform: rotate(14.0deg)
+    }
+
+    40% {
+      transform: rotate(-4.0deg)
+    }
+
+    50% {
+      transform: rotate(10.0deg)
+    }
+
+    60% {
+      transform: rotate(0.0deg)
+    }
+
+    /* Reset for the last half to pause */
+    100% {
+      transform: rotate(0.0deg)
+    }
+  }
 }
