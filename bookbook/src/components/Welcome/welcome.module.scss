@@ -53,11 +53,14 @@
       color: #a1a0a0;
       font-weight: lighter;
     }
+
     .starContainer {
+      margin-top: 2vw;
       margin-bottom: 1vw;
       height: 25%;
       font-size: 1.5vw;
     }
+
     .buttonContainer {
       display: grid;
       grid-auto-flow: column;
@@ -97,10 +100,13 @@
       input[type="text"] {
         font-size: 5vw;
       }
+
       .starContainer {
+        margin-top: 2vw;
         margin-bottom: 3vw;
         font-size: 4.5vw;
       }
+
       .buttonContainer {
         display: grid;
         grid-auto-flow: column;
@@ -112,7 +118,7 @@
       width: 130px;
       height: 35px;
       border-radius: 5vw;
-      font-size: 4.3vw;
+      font-size: 2.3vw;
     }
 
     button:hover {
