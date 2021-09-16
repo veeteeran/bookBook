@@ -3,11 +3,9 @@ import {
   LocalLibrary as LocalLibraryIcon,
   Storefront as StorefrontIcon,
 } from '@material-ui/icons'
-import { getCarouselLoadingPhrase } from 'util/getPhrase'
 import React, { useEffect, useState } from 'react'
 import { useSpringCarousel } from 'react-spring-carousel-js'
-
-
+import { getCarouselLoadingPhrase } from 'util/getPhrase'
 const styles = require('./carousel.module.scss')
 
 const BookCarousel = ({ bookData }) => {

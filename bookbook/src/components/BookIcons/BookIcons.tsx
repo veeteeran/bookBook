@@ -1,6 +1,5 @@
 import { ImportContacts as ImportContactsIcon } from '@material-ui/icons'
 import React from 'react'
-
 const styles = require('./bookIcons.module.scss')
 
 const BookIcons = ({ booksAdded }) => {

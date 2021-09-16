@@ -1,11 +1,10 @@
-import { CircularProgress } from '@material-ui/core'
 import {
   getBookAddedPhrase,
   getLoadingPhrase,
   getBookRejectedPhrase
 } from '../../../util/getPhrase'
+import { CircularProgress } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-
 const styles = require('./loadingPhrase.module.scss')
 
 const LoadingPhrase = ({ data, rating }) => {
