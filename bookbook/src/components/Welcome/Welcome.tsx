@@ -1,11 +1,11 @@
 
+import BookCarousel from '../BookCarousel/BookCarousel'
+import BookIcons from '../BookIcons/BookIcons'
+import LoadingPhrase from '../LoadingPhrase/LoadingPhrase'
 import { Box, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Rating from '@material-ui/lab/Rating'
 import React, { useEffect, useState } from 'react'
-import BookCarousel from '../BookCarousel/BookCarousel'
-import BookIcons from '../BookIcons/BookIcons'
-import LoadingPhrase from '../LoadingPhrase/LoadingPhrase'
 const styles = require('./welcome.module.scss')
 
 const labels = {

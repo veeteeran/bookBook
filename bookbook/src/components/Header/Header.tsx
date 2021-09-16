@@ -1,5 +1,6 @@
-import React from 'react'
 import { Button } from '@material-ui/core'
+import React from 'react'
+
 const styles = require('./header.module.scss')
 
 const Header = () => {
