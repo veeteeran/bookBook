@@ -104,7 +104,7 @@ const Welcome = () => {
             <form onSubmit={handleSetUrl}>
               <input
                 onChange={handleChange}
-                placeholder='A Tale of Two Cities'
+                placeholder='Sea Programming'
                 type='text'
                 value={title}
               />
