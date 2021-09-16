@@ -9,12 +9,14 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+
   .title {
     font-family: Thasadith;
     font-size: 5vw;
     color: #375E97;
     font-weight: 600;
   }
+
   form {
     width: 100%;
     height: 50%;
@@ -22,29 +24,39 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
     input {
-      width: 63.5%;
-      height: 2.5rem;
+      width: 85%;
+      height: 4rem;
       border-radius: 1vw;
-      box-shadow: 0.2vw 0.3vw 0 rgba(184, 184, 184, 0.3) inset,-0.2vw 0 0 rgba(184, 184, 184, 0.3) inset;
+      box-shadow: 0.2vw 0.3vw 0 rgba(184, 184, 184, 0.3) inset, -0.2vw 0 0 rgba(184, 184, 184, 0.3) inset;
       border: none;
     }
+
     input[type="text"] {
       background-color: #FAEACB;
       text-align: center;
       font-size: 2.6vw;
     }
+
     ::placeholder {
-      color: #313639;
+      color: #a1a0a0;
       font-weight: lighter;
     }
+
     :-ms-input-placeholder {
-      color: #313639;
+      color: #a1a0a0;
       font-weight: lighter;
     }
+
     ::-ms-input-placeholder {
-      color: #313639;
+      color: #a1a0a0;
       font-weight: lighter;
+    }
+    .starContainer {
+      margin-bottom: 1vw;
+      height: 25%;
+      font-size: 1.5vw;
     }
     .buttonContainer {
       display: grid;
@@ -52,16 +64,19 @@
       column-gap: 3vw;
     }
   }
+
   button {
     width: 14vw;
     border-radius: 3vw;
     background-color: #CB6318;
     color: #313639;
-    font-family: 'Sue Ellen Francisco';
+    font-family: Thasadith;
     font-size: 2vw;
+    font-weight: 700;
     border: none;
     cursor: pointer;
   }
+
   button:hover {
     background-color: #7CAA2D;
   }
@@ -72,13 +87,19 @@
     .title {
       font-size: 8.4vw;
     }
+
     form {
       input {
         width: 67.4%;
         height: 2.8rem;
       }
+
       input[type="text"] {
         font-size: 5vw;
+      }
+      .starContainer {
+        margin-bottom: 3vw;
+        font-size: 4.5vw;
       }
       .buttonContainer {
         display: grid;
@@ -86,12 +107,14 @@
         column-gap: 5vw;
       }
     }
+
     button {
       width: 130px;
       height: 35px;
       border-radius: 5vw;
       font-size: 4.3vw;
     }
+
     button:hover {
       background-color: #7CAA2D;
     }
