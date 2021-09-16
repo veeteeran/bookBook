@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
   disabled: {
     textTransform: "none",
-    opacity: 0.7
+    opacity: 0.5
   }
 })
 
