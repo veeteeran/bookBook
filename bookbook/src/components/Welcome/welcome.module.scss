@@ -19,7 +19,7 @@
 
   form {
     width: 100%;
-    height: 50%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,6 +92,7 @@
     }
 
     form {
+      height: 51%;
       input {
         width: 67.4%;
         height: 2.8rem;
@@ -102,8 +103,8 @@
       }
 
       .starContainer {
-        margin-top: 2vw;
-        margin-bottom: 3vw;
+        margin-top: 1.5vw;
+        // margin-bottom: 3vw;
         font-size: 4.5vw;
       }
 
