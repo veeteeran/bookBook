@@ -1,6 +1,5 @@
-import React from 'react'
 import { ImportContacts as ImportContactsIcon } from '@material-ui/icons'
-
+import React from 'react'
 const styles = require('./bookIcons.module.scss')
 
 const BookIcons = ({ booksAdded }) => {
@@ -11,7 +10,7 @@ const BookIcons = ({ booksAdded }) => {
         style={
           booksAdded > 0
             ? { color: '#4170b4' }
-            : { color: 'gray' }
+            : { color: '#a1a0a0' }
         }
       />
       <ImportContactsIcon
@@ -19,7 +18,7 @@ const BookIcons = ({ booksAdded }) => {
         style={
           booksAdded > 1
             ? { color: '#4170b4' }
-            : { color: 'gray' }
+            : { color: '#a1a0a0' }
         }
       />
       <ImportContactsIcon
@@ -27,7 +26,7 @@ const BookIcons = ({ booksAdded }) => {
         style={
           booksAdded > 2
             ? { color: '#4170b4' }
-            : { color: 'gray' }
+            : { color: '#a1a0a0' }
         }
       />
     </div>

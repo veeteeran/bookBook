@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core'
 import React from 'react'
 const styles = require('./header.module.scss')
 
@@ -5,9 +6,8 @@ const Header = () => {
   return (
     <div className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.icon} />
-        <div className={styles.title}>bookBook</div>
-        <div className={styles.getList} />
+        <Button className={styles.logo} href="/" />
+        <div className={styles.bB} />
       </div>
     </div>
   )

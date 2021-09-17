@@ -1,10 +1,11 @@
+
+import BookCarousel from '../BookCarousel/BookCarousel'
+import BookIcons from '../BookIcons/BookIcons'
+import LoadingPhrase from '../LoadingPhrase/LoadingPhrase'
 import { Box, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Rating from '@material-ui/lab/Rating'
 import React, { useEffect, useState } from 'react'
-import BookCarousel from '../BookCarousel/BookCarousel'
-import BookIcons from '../BookIcons/BookIcons'
-import LoadingPhrase from '../LoadingPhrase/LoadingPhrase'
 const styles = require('./welcome.module.scss')
 
 const labels = {
@@ -20,19 +21,14 @@ const labels = {
   5: 'Own a copy',
 }
 const useStyles = makeStyles({
-  root: {
-    marginBottom: 0,
-    height: '25%'
-  },
   button: {
     textTransform: "none"
   },
   disabled: {
     textTransform: "none",
-    opacity: 0.7
+    opacity: 0.5
   }
 })
-
 
 const Welcome = () => {
   const [title, setTitle] = useState('')
@@ -104,16 +100,17 @@ const Welcome = () => {
         ? <LoadingPhrase data={data} rating={Math.round(rating / 2)} />
         : !showCarousel
           ? <>
-            <h1 className={styles.title}>Feed me your favorites</h1>
+            {/* <h1 className={styles.title}>Feed me your favorites</h1> */}
             <form onSubmit={handleSetUrl}>
               <input
                 onChange={handleChange}
-                placeholder='A Tale of Two Cities'
+                placeholder='Sea Programming'
                 type='text'
                 value={title}
               />
-              <Box className={classes.root} component="fieldset" mb={3} borderColor="transparent">
+              <Box className={styles.starContainer} component="fieldset" mb={3} borderColor="transparent">
                 <Rating
+                  size="large"
                   name="simple-controlled"
                   value={rating / 2}
                   onChange={(event, newRating) => {

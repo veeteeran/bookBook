@@ -1,10 +1,10 @@
-import React from 'react'
 import Button from '@material-ui/core/Button'
 import {
   Instagram as InstagramIcon,
   LinkedIn as LinkedInIcon,
   Twitter as TwitterIcon
 } from '@material-ui/icons'
+import React from 'react'
 const styles = require('./footer.module.scss')
 
 const Footer = () => {
